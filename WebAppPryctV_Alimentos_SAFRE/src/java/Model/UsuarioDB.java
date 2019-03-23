@@ -48,11 +48,12 @@ public class UsuarioDB {
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
              //Se llena el arryaList con los proyectos   
               while (rsPA.next()) {
-
-                  int id_Persona_Empleado = rsPA.getInt("ID_Persona_Empleado");                  
+                  
                   int id_Tipo_Persona = rsPA.getInt("ID_Tipo_Persona");
                   int id_tipo_Indentificacion = rsPA.getInt("ID_tipo_Indentificacion");
                   int id_Horario = rsPA.getInt("ID_Horario");
+                  float persona_Empleado = rsPA.getInt("Persona_Empleado");                  
+                  String tipo_Empleado = rsPA.getString("Tipo_Empleado");
                   float persona_Cliente = rsPA.getInt("Persona_Cliente");
                   String idntf_persona = rsPA.getString("idntf_persona");
                   String nmbr_persona = rsPA.getString("nmbr_persona");
@@ -67,7 +68,7 @@ public class UsuarioDB {
                   long id_Usr_Ult_Registro = rsPA.getLong("id_Usr_Ult_Registro");
                   Date fecha_Ult_Registro = rsPA.getDate("fech_Ult_Registro");
 
-                  Usuario oUsuario = new Usuario(id_Persona_Empleado, id_Tipo_Persona, id_tipo_Indentificacion, id_Horario, persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fecha_Registro, id_Usr_Ult_Registro, fecha_Ult_Registro);
+                  Usuario oUsuario = new Usuario(id_Tipo_Persona, id_tipo_Indentificacion, id_Horario, persona_Empleado, tipo_Empleado, persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fecha_Registro, id_Usr_Ult_Registro, fecha_Ult_Registro);
                           
                   listaPro.add(oUsuario);
 

@@ -13,10 +13,11 @@ import java.util.Date;
  */
 public class Usuario {
     
-    private int ID_Persona_Empleado;    
-    private int ID_Tipo_Persona;
-    private int ID_tipo_Indentificacion;
-    private int ID_Horario;
+    private int id_Tipo_Persona;
+    private int id_tipo_Indentificacion;
+    private int id_Horario;
+    private float persona_Empleado;    
+    private String tipo_Empleado;
     private float Persona_Cliente;
     private String idntf_persona;
     private String nmbr_persona;
@@ -31,12 +32,44 @@ public class Usuario {
     private long id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
 
-    public int getID_Persona_Empleado() {
-        return ID_Persona_Empleado;
+    public int getId_Tipo_Persona() {
+        return id_Tipo_Persona;
     }
 
-    public void setID_Persona_Empleado(int ID_Persona_Empleado) {
-        this.ID_Persona_Empleado = ID_Persona_Empleado;
+    public void setId_Tipo_Persona(int id_Tipo_Persona) {
+        this.id_Tipo_Persona = id_Tipo_Persona;
+    }
+
+    public int getId_tipo_Indentificacion() {
+        return id_tipo_Indentificacion;
+    }
+
+    public void setId_tipo_Indentificacion(int id_tipo_Indentificacion) {
+        this.id_tipo_Indentificacion = id_tipo_Indentificacion;
+    }
+
+    public int getId_Horario() {
+        return id_Horario;
+    }
+
+    public void setId_Horario(int id_Horario) {
+        this.id_Horario = id_Horario;
+    }
+
+    public float getPersona_Empleado() {
+        return persona_Empleado;
+    }
+
+    public void setPersona_Empleado(float persona_Empleado) {
+        this.persona_Empleado = persona_Empleado;
+    }   
+
+    public String getTipo_Empleado() {
+        return tipo_Empleado;
+    }
+
+    public void setTipo_Empleado(String tipo_Empleado) {
+        this.tipo_Empleado = tipo_Empleado;
     }
 
     public float getPersona_Cliente() {
@@ -45,31 +78,6 @@ public class Usuario {
 
     public void setPersona_Cliente(float Persona_Cliente) {
         this.Persona_Cliente = Persona_Cliente;
-    }
-   
-
-    public int getID_Tipo_Persona() {
-        return ID_Tipo_Persona;
-    }
-
-    public void setID_Tipo_Persona(int ID_Tipo_Persona) {
-        this.ID_Tipo_Persona = ID_Tipo_Persona;
-    }
-
-    public int getID_tipo_Indentificacion() {
-        return ID_tipo_Indentificacion;
-    }
-
-    public void setID_tipo_Indentificacion(int ID_tipo_Indentificacion) {
-        this.ID_tipo_Indentificacion = ID_tipo_Indentificacion;
-    }
-
-    public int getID_Horario() {
-        return ID_Horario;
-    }
-
-    public void setID_Horario(int ID_Horario) {
-        this.ID_Horario = ID_Horario;
     }
 
     public String getIdntf_persona() {
@@ -126,7 +134,7 @@ public class Usuario {
 
     public void setDirc_Principal(String dirc_Principal) {
         this.dirc_Principal = dirc_Principal;
-    }   
+    }
 
     public String getLog_Activo() {
         return log_Activo;
@@ -142,26 +150,6 @@ public class Usuario {
 
     public void setId_Usr_Registro(long id_Usr_Registro) {
         this.id_Usr_Registro = id_Usr_Registro;
-    }   
-
-    public Date getFecha_Registro() {
-        return fech_Registro;
-    }
-
-    public void setFecha_Registro(Date fecha_Registro) {
-        this.fech_Registro = fecha_Registro;
-    }   
-
-    public long getId_Usr_Ult_Registro() {
-        return id_Usr_Ult_Registro;
-    }
-
-    public void setId_Usr_Ult_Registro(long id_Usr_Ult_Registro) {
-        this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
-    }   
-
-    public Date getFecha_Ult_Registro() {
-        return fech_Ult_Registro;
     }
 
     public Date getFech_Registro() {
@@ -172,6 +160,14 @@ public class Usuario {
         this.fech_Registro = fech_Registro;
     }
 
+    public long getId_Usr_Ult_Registro() {
+        return id_Usr_Ult_Registro;
+    }
+
+    public void setId_Usr_Ult_Registro(long id_Usr_Ult_Registro) {
+        this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
+    }
+
     public Date getFech_Ult_Registro() {
         return fech_Ult_Registro;
     }
@@ -180,15 +176,12 @@ public class Usuario {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
 
-    public void setFecha_Ult_Registro(Date fecha_Ult_Registro) {
-        this.fech_Ult_Registro = fecha_Ult_Registro;
-    }
-
-    public Usuario(int ID_Persona_Empleado, int ID_Tipo_Persona, int ID_tipo_Indentificacion, int ID_Horario, float Persona_Cliente, String idntf_persona, String nmbr_persona, String aplld_1_persona, String aplld_2_persona, String cntrs_persona, String dscrp_Empresa, String dirc_Principal, String log_Activo, long id_Usr_Registro, Date fech_Registro, long id_Usr_Ult_Registro, Date fech_Ult_Registro) {
-        this.ID_Persona_Empleado = ID_Persona_Empleado;
-        this.ID_Tipo_Persona = ID_Tipo_Persona;
-        this.ID_tipo_Indentificacion = ID_tipo_Indentificacion;
-        this.ID_Horario = ID_Horario;
+    public Usuario(int id_Tipo_Persona, int id_tipo_Indentificacion, int id_Horario, float persona_Empleado, String tipo_Empleado, float Persona_Cliente, String idntf_persona, String nmbr_persona, String aplld_1_persona, String aplld_2_persona, String cntrs_persona, String dscrp_Empresa, String dirc_Principal, String log_Activo, long id_Usr_Registro, Date fech_Registro, long id_Usr_Ult_Registro, Date fech_Ult_Registro) {
+        this.id_Tipo_Persona = id_Tipo_Persona;
+        this.id_tipo_Indentificacion = id_tipo_Indentificacion;
+        this.id_Horario = id_Horario;
+        this.persona_Empleado = persona_Empleado;
+        this.tipo_Empleado = tipo_Empleado;
         this.Persona_Cliente = Persona_Cliente;
         this.idntf_persona = idntf_persona;
         this.nmbr_persona = nmbr_persona;
@@ -202,6 +195,10 @@ public class Usuario {
         this.fech_Registro = fech_Registro;
         this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
         this.fech_Ult_Registro = fech_Ult_Registro;
-    }   
+    }
+    
+    
+
+    
     
 }
