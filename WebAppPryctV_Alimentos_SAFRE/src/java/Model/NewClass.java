@@ -10,5 +10,5 @@ package Model;
  * @author mi pc
  */
 public class NewClass {
-    
+    private int t;
 }
