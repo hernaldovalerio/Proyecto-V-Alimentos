@@ -94,7 +94,18 @@ public class Producto {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
 
-    public Producto() {
-    }        
+    public Producto(int id_Categoria, String rut_Fotografia, double precio, int cnt_minima, float log_activo, long id_usr_regitro, Date fech_Registro, long id_Usr_Ult_Edicion, Date fech_Ult_Registro) {
+        this.id_Categoria = id_Categoria;
+        this.rut_Fotografia = rut_Fotografia;
+        this.precio = precio;
+        this.cnt_minima = cnt_minima;
+        this.log_activo = log_activo;
+        this.id_usr_regitro = id_usr_regitro;
+        this.fech_Registro = fech_Registro;
+        this.id_Usr_Ult_Edicion = id_Usr_Ult_Edicion;
+        this.fech_Ult_Registro = fech_Ult_Registro;
+    }
+
+        
             
 }
