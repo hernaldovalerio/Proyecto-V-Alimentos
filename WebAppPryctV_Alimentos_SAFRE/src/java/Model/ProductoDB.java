@@ -17,7 +17,7 @@ import java.util.LinkedList;
  *
  * @author ucr
  */
-public class ProductoDB {
+public class ProductoDB extends Hacienda{
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
 
@@ -32,58 +32,76 @@ public class ProductoDB {
         super();
     }
     
-    public int ActivarRegistroBD(){
+    @Override
+    public int ActivarRegistroBD() {
         return 1;
     }
-    
-    public String ID_Usr_RegistroBD(){
+
+    @Override
+    public String ID_Usr_RegistroBD() {
         return "604260120";
-    }    
-    
-    public void InsertarProducto(Usuario pUsuario)throws SNMPExceptions, SQLException {
+    }
+        
+    public boolean ConsultarProducto(int ID) throws SNMPExceptions, SQLException{
+        
+        boolean existe = false;
         String sql = "";
         try {
-            sql = "INSERT INTO PERSONA"
+            AccesoDatos accesoDatos = new AccesoDatos();
+            sql = "SELECT * FROM PRODUCTO WHERE ID = " + ID;
+            ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
+            
+            if (rsPA.next()) {
+                existe = true;
+            }
+            
+            rsPA.close();
+            return existe;
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+        
+    }
+    
+    public void InsertarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
+        String sql = "";
+        try {
+            sql = "INSERT INTO PRODUCTO"
                     + "(" +
-                    "ID_Tipo_Persona," +
-		    "ID_Tipo_Identificacion,"  +
-                    "ID_Horario," +
-		    "Persona_Cliente," +
-		    "Idntf_Persona," + 
-                    "Nmbr_Persona," +
-                    "Aplld_1_Persona," +
-                    "Aplld_2_Persona," +
-		    "Contrs_Persona," +
-                    "Nmbr_Empresa," +
-                    "Dirc_Principal," +
+                    "ID_Categoria," +                    
+		    "Rut_Fotografia,"  +                    
+                    "Precio," +                    
+		    "Cnt_Minima," +                    		    
                     "LOG_ACTIVO,"+
 		    "ID_Usr_Registro," +
                     "Fech_Registro," +
                     "ID_Usr_Ult_Edicion," +
-                    "Fech_Ult_Edicion)"+
-		    "VALUES"
-                    + "(" +
-                    
-                    "" +pUsuario.getId_Tipo_Persona()+ "" +
-                    "" +pUsuario.getId_tipo_Identificacion()+ "" +
-                    "" +pUsuario.getId_Horario()+ "" +
-                    "" +pUsuario.getPersona_Cliente()+ "" +
-                    "'" +pUsuario.getIdntf_persona()+ "'" +            
-	            "'" +pUsuario.getNmbr_persona()+ "'" +
-                    "'" +pUsuario.getAplld_1_persona()+ "'" +
-                    "'" +pUsuario.getAplld_2_persona()+ "'" +
-                    "'" +pUsuario.getCntrs_persona()+ "'" +
-                    "'" +pUsuario.getNmbr_persona()+ "'" +
-                    "'" +pUsuario.getDirc_Principal()+ "'" +                    
+                    "Fech_Ult_Edicion" +
+                    ")" +
+		    " VALUES" + 
+                    "(" +                    
+                    "" +pProducto.getId_Categoria()+ "" +                    
+                    "'" +pProducto.getRut_Fotografia()+ "'" +
+                    "" +pProducto.getPrecio()+ "" +
+                    "" +pProducto.getCnt_minima()+ "" +                                        
                     "" +this.ActivarRegistroBD()+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
-                    "" +"GETDATE()"+ "" +                    
-                    "" +pUsuario.getFech_Ult_Registro()+ ")" ;
-                                                    		
+                    "" +"GETDATE()"+ 
+                    ")";
+            
+            accesoDatos.ejecutaSQL(sql);                                                    		
                         
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
         } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
         }
     }
     

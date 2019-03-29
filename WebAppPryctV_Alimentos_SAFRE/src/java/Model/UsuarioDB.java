@@ -17,7 +17,7 @@ import java.util.LinkedList;
  *
  * @author mi pc
  */
-public class UsuarioDB {
+public class UsuarioDB extends Hacienda {
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
 
@@ -32,13 +32,40 @@ public class UsuarioDB {
         super();
     }
     
-    public int ActivarRegistroBD(){
+    @Override
+    public int ActivarRegistroBD() {
         return 1;
     }
-    
-    public String ID_Usr_RegistroBD(){
+
+    @Override
+    public String ID_Usr_RegistroBD() {
         return "604260120";
-    }    
+    }
+            
+    public boolean ConsultarUsuario(int ID) throws SNMPExceptions, SQLException{
+        
+        boolean existe = false;
+        String sql = "";
+        try {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            sql = "SELECT * FROM PERSONA WHERE ID = " + ID;
+            ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
+            
+            if (rsPA.next()) {
+                existe = true;
+            }
+            
+            rsPA.close();
+            return existe;
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+        
+    }
     
     public void InsertarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
         String sql = "";
@@ -60,10 +87,10 @@ public class UsuarioDB {
 		    "ID_Usr_Registro," +
                     "Fech_Registro," +
                     "ID_Usr_Ult_Edicion," +
-                    "Fech_Ult_Edicion)"+
-		    "VALUES"
-                    + "(" +
-                    
+                    "Fech_Ult_Edicion" +
+                    ")" +
+		    " VALUES" + 
+                    "(" +                                      
                     "" +pUsuario.getId_Tipo_Persona()+ "" +
                     "" +pUsuario.getId_tipo_Identificacion()+ "" +
                     "" +pUsuario.getId_Horario()+ "" +
@@ -79,15 +106,20 @@ public class UsuarioDB {
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
-                    "" +"GETDATE()"+ "" +                    
-                    "" +pUsuario.getFech_Ult_Registro()+ ")" ;
-                                                    		
-                        
+                    "" +"GETDATE()"+ 
+                    ")";
+                    
+            accesoDatos.ejecutaSQL(sql);
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
         } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
         }
     }
     
-    public  LinkedList<Usuario> usuariosTodo() throws SNMPExceptions, SQLException {
+    public LinkedList<Usuario> UsuarioTodo() throws SNMPExceptions, SQLException {
       String select = "";
       LinkedList<Usuario> listaPro = new LinkedList<Usuario>();
           
@@ -159,5 +191,5 @@ public class UsuarioDB {
               
           }
           return listaPro;
-      }
+      }    
 }
