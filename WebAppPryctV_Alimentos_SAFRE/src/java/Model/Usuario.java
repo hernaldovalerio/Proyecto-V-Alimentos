@@ -14,7 +14,7 @@ import java.util.Date;
 public class Usuario {
     
     private int id_Tipo_Persona;
-    private int id_tipo_Indentificacion;
+    private int id_tipo_Identificacion;
     private int id_Horario;
     private float persona_Empleado;    
     private String tipo_Empleado;
@@ -40,13 +40,13 @@ public class Usuario {
         this.id_Tipo_Persona = id_Tipo_Persona;
     }
 
-    public int getId_tipo_Indentificacion() {
-        return id_tipo_Indentificacion;
+    public int getId_tipo_Identificacion() {
+        return id_tipo_Identificacion;
     }
 
-    public void setId_tipo_Indentificacion(int id_tipo_Indentificacion) {
-        this.id_tipo_Indentificacion = id_tipo_Indentificacion;
-    }
+    public void setId_tipo_Identificacion(int id_tipo_Identificacion) {
+        this.id_tipo_Identificacion = id_tipo_Identificacion;
+    }   
 
     public int getId_Horario() {
         return id_Horario;
@@ -178,7 +178,7 @@ public class Usuario {
 
     public Usuario(int id_Tipo_Persona, int id_tipo_Indentificacion, int id_Horario, float persona_Empleado, String tipo_Empleado, float Persona_Cliente, String idntf_persona, String nmbr_persona, String aplld_1_persona, String aplld_2_persona, String cntrs_persona, String dscrp_Empresa, String dirc_Principal, String log_Activo, long id_Usr_Registro, Date fech_Registro, long id_Usr_Ult_Registro, Date fech_Ult_Registro) {
         this.id_Tipo_Persona = id_Tipo_Persona;
-        this.id_tipo_Indentificacion = id_tipo_Indentificacion;
+        this.id_tipo_Identificacion = id_tipo_Indentificacion;
         this.id_Horario = id_Horario;
         this.persona_Empleado = persona_Empleado;
         this.tipo_Empleado = tipo_Empleado;
