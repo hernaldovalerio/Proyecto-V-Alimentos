@@ -67,7 +67,7 @@ public class UsuarioDB extends Hacienda {
         
     }
     
-    public void InsertarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
+    public boolean InsertarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
         String sql = "";
         try {
             sql = "INSERT INTO PERSONA"
@@ -110,6 +110,7 @@ public class UsuarioDB extends Hacienda {
                     ")";
                     
             accesoDatos.ejecutaSQL(sql);
+            return true;
             
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        

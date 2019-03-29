@@ -67,7 +67,7 @@ public class ProductoDB extends Hacienda{
         
     }
     
-    public void InsertarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
+    public boolean InsertarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
         String sql = "";
         try {
             sql = "INSERT INTO PRODUCTO"
@@ -96,6 +96,7 @@ public class ProductoDB extends Hacienda{
                     ")";
             
             accesoDatos.ejecutaSQL(sql);                                                    		
+            return true;
                         
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
