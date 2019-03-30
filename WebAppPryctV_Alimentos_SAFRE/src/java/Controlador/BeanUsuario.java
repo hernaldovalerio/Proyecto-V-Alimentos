@@ -3,15 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Controlador;
 
+import DAO.AccesoDatos;
+import DAO.SNMPExceptions;
+import Model.Producto;
+import Model.ProductoDB;
+import Model.Usuario;
+import Model.UsuarioDB;
+import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import javax.inject.Named;
+import javax.enterprise.context.Dependent;
+import javax.faces.model.SelectItem;
 
 /**
  *
- * @author mi pc
+ * @author dramirez
  */
-public class Usuario {
+@Named(value = "beanUsuario")
+@Dependent
+public class BeanUsuario {
     
     private int id_Tipo_Persona;
     private int id_tipo_Identificacion;
@@ -46,7 +61,7 @@ public class Usuario {
 
     public void setId_tipo_Identificacion(int id_tipo_Identificacion) {
         this.id_tipo_Identificacion = id_tipo_Identificacion;
-    }   
+    }
 
     public int getId_Horario() {
         return id_Horario;
@@ -62,7 +77,7 @@ public class Usuario {
 
     public void setPersona_Empleado(float persona_Empleado) {
         this.persona_Empleado = persona_Empleado;
-    }   
+    }
 
     public String getTipo_Empleado() {
         return tipo_Empleado;
@@ -176,29 +191,15 @@ public class Usuario {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
 
-    public Usuario(int id_Tipo_Persona, int id_tipo_Indentificacion, int id_Horario, float persona_Empleado, String tipo_Empleado, float Persona_Cliente, String idntf_persona, String nmbr_persona, String aplld_1_persona, String aplld_2_persona, String cntrs_persona, String dscrp_Empresa, String dirc_Principal, String log_Activo, long id_Usr_Registro, Date fech_Registro, long id_Usr_Ult_Registro, Date fech_Ult_Registro) {
-        this.id_Tipo_Persona = id_Tipo_Persona;
-        this.id_tipo_Identificacion = id_tipo_Indentificacion;
-        this.id_Horario = id_Horario;
-        this.persona_Empleado = persona_Empleado;
-        this.tipo_Empleado = tipo_Empleado;
-        this.Persona_Cliente = Persona_Cliente;
-        this.idntf_persona = idntf_persona;
-        this.nmbr_persona = nmbr_persona;
-        this.aplld_1_persona = aplld_1_persona;
-        this.aplld_2_persona = aplld_2_persona;
-        this.cntrs_persona = cntrs_persona;
-        this.dscrp_Empresa = dscrp_Empresa;
-        this.dirc_Principal = dirc_Principal;
-        this.log_Activo = log_Activo;
-        this.id_Usr_Registro = id_Usr_Registro;
-        this.fech_Registro = fech_Registro;
-        this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
-        this.fech_Ult_Registro = fech_Ult_Registro;
+    
+    public BeanUsuario() {
     }
     
-    
-
-    
-    
+    public boolean AgregarUsuario() throws SNMPExceptions, SQLException{
+        //Validaciones 
+        Usuario oUsuario = new Usuario(id_Tipo_Persona, id_tipo_Identificacion, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
+        UsuarioDB oUsuarioDB = new UsuarioDB();
+        return oUsuarioDB.InsertarUsuario(oUsuario);
+    }
+   
 }
