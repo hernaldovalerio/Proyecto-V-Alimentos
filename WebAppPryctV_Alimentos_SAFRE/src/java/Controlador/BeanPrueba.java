@@ -46,11 +46,11 @@ public class BeanPrueba implements Serializable {
         
     }
     
-    public boolean AgregarPrueba() throws SNMPExceptions, SQLException{
+    public void AgregarPrueba() throws SNMPExceptions, SQLException{
         //Validaciones 
         Prueba oPrueba = new Prueba(id, descripcion);
         PruebaDB oPruebaDB = new PruebaDB();
-        return oPruebaDB.InsertarPrueba(oPrueba);
+        oPruebaDB.InsertarPrueba(oPrueba);
     }
     
 }

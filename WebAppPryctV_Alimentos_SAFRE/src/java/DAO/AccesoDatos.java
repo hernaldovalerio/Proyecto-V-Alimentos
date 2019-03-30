@@ -103,7 +103,7 @@ public class AccesoDatos implements Serializable {
         ResultSet rs = null;
      
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pryctV_WebAlimentos1", "sa", "12345");
+        dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=prueba", "sa", "12345");
         
         try{
             //Crear el statemente para la ejecucion de sentencias
