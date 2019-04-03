@@ -151,9 +151,9 @@ public class UsuarioDB extends Hacienda {
                   String nmbr_Empresa = rsPA.getString("Nmbr_Empresa");
                   String dirc_Principal = rsPA.getString("Dirc_Principal");
                   String log_Activo = rsPA.getString("LOG_ACTIVO");
-                  long id_Usr_Registro = rsPA.getLong("ID_Usr_Registro");
+                  String id_Usr_Registro = rsPA.getString("ID_Usr_Registro");
                   Date fecha_Registro = rsPA.getDate("Fech_Registro");
-                  long id_Usr_Ult_Registro = rsPA.getLong("ID_Usr_Ult_Edicion");
+                  String id_Usr_Ult_Registro = rsPA.getString("ID_Usr_Ult_Edicion");
                   Date fecha_Ult_Registro = rsPA.getDate("Fech_Ult_Edicion");
 
                   Usuario oUsuario = new Usuario(
