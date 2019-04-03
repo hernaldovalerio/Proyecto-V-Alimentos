@@ -42,8 +42,7 @@ public class BeanPrueba implements Serializable {
         this.descripcion = descripcion;
     }
     
-    public BeanPrueba() {
-        
+    public BeanPrueba() {        
     }
     
     public void AgregarPrueba() throws SNMPExceptions, SQLException{
