@@ -42,9 +42,9 @@ public class BeanUsuario {
     private String dscrp_Empresa;
     private String dirc_Principal;
     private String log_Activo; 
-    private long id_Usr_Registro;
+    private String id_Usr_Registro;
     private Date fech_Registro;
-    private long id_Usr_Ult_Registro;
+    private String id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
 
     public int getId_Tipo_Persona() {
@@ -159,11 +159,11 @@ public class BeanUsuario {
         this.log_Activo = log_Activo;
     }
 
-    public long getId_Usr_Registro() {
+    public String getId_Usr_Registro() {
         return id_Usr_Registro;
     }
 
-    public void setId_Usr_Registro(long id_Usr_Registro) {
+    public void setId_Usr_Registro(String id_Usr_Registro) {
         this.id_Usr_Registro = id_Usr_Registro;
     }
 
@@ -175,11 +175,11 @@ public class BeanUsuario {
         this.fech_Registro = fech_Registro;
     }
 
-    public long getId_Usr_Ult_Registro() {
+    public String getId_Usr_Ult_Registro() {
         return id_Usr_Ult_Registro;
     }
 
-    public void setId_Usr_Ult_Registro(long id_Usr_Ult_Registro) {
+    public void setId_Usr_Ult_Registro(String id_Usr_Ult_Registro) {
         this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
     }
 
@@ -189,8 +189,7 @@ public class BeanUsuario {
 
     public void setFech_Ult_Registro(Date fech_Ult_Registro) {
         this.fech_Ult_Registro = fech_Ult_Registro;
-    }
-
+    }  
     
     public BeanUsuario() {
     }

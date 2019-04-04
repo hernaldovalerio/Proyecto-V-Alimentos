@@ -12,6 +12,7 @@ import java.util.Date;
  * @author mi pc
  */
 public class Producto {
+    private int id;
     private int id_Categoria;
     private String rut_Fotografia;
     private double precio;
@@ -21,6 +22,14 @@ public class Producto {
     private Date fech_Registro;
     private long id_Usr_Ult_Edicion;
     private Date fech_Ult_Registro;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }    
 
     public int getId_Categoria() {
         return id_Categoria;

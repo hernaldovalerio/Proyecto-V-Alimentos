@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Usuario {
     
+    private int id;
     private int id_Tipo_Persona;
     private int id_tipo_Identificacion;
     private int id_Horario;
@@ -31,6 +32,15 @@ public class Usuario {
     private Date fech_Registro;
     private String id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public int getId_Tipo_Persona() {
         return id_Tipo_Persona;
@@ -195,12 +205,5 @@ public class Usuario {
         this.fech_Registro = fech_Registro;
         this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
         this.fech_Ult_Registro = fech_Ult_Registro;
-    }
-
-    
-    
-    
-
-    
-    
+    }               
 }
