@@ -1,15 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <h:form>
-        ID<h:inputText value="#{beanPrueba.id}"></h:inputText>
-        Descripcion<h:inputText value="#{beanPrueba.descripcion}"></h:inputText>
-        <h:commandButton value="Agregar" action="#{beanPrueba.AgregarPrueba()}"></h:commandButton>
+            ID<h:inputText value="#{beanPrueba.id}"></h:inputText>
+            <p>Descripcion<h:inputText value="#{beanPrueba.descripcion}"></h:inputText></p>
+            <p>Estado
+                <h:selectOneMenu value="#{beanPrueba.log_activo}">
+                    <f:selectItem itemLabel="Activo" itemValue="1"></f:selectItem>
+                    <f:selectItem itemLabel="Inactivo" itemValue="0"></f:selectItem>
+                </h:selectOneMenu>
+            </p>                
+            <BR><h:commandButton value="Agregar" action="#{beanPrueba.AgregarPrueba()}"></h:commandButton></BR>
+            <BR><h:commandButton value="Editar" action="#{beanPrueba.EditarPrueba()}"></h:commandButton></BR>
         </h:form>
     </h:body>
 </html>

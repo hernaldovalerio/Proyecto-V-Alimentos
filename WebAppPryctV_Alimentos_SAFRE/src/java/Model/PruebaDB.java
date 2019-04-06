@@ -32,14 +32,38 @@ public class PruebaDB {
             sql = "INSERT INTO TODO"
                     + "(" +
                     "ID," +                    
-		    "Descripcion"  +                    
+		    "Descripcion,"  +                    
+                    "LOG_ACTIVO,"  +                    
                     ")" +
 		    " VALUES" + 
                     "(" +                                      
                     "" +pPrueba.getId()+ "," +
-                    "'" +pPrueba.getDescripcion()+ "'" +                                        
+                    "'" +pPrueba.getDescripcion()+ "'," +                                        
+                    "" + pPrueba.getLog_activo() +    
                     ")";
                     
+            accesoDatos.ejecutaSQL(sql);
+            return true;
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+    }
+    
+    public boolean EditarPrueba(Prueba pPrueba)throws SNMPExceptions, SQLException{
+        String sql = "";
+        try {               
+            sql = "UPDATE TODO" +
+                    " set" +
+                    " Descripcion" +                    
+		    " =" +
+                    " '" + pPrueba.getDescripcion() + "'"+
+		    " WHERE" + 
+                    " ID" +                                      
+                    " = " +pPrueba.getId();                                                            
             accesoDatos.ejecutaSQL(sql);
             return true;
             

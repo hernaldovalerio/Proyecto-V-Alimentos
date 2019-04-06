@@ -18,9 +18,9 @@ public class Producto {
     private double precio;
     private int cnt_minima;
     private float log_activo;
-    private long id_usr_regitro;
+    private String id_usr_regitro;
     private Date fech_Registro;
-    private long id_Usr_Ult_Edicion;
+    private String id_Usr_Ult_Edicion;
     private Date fech_Ult_Registro;
 
     public int getId() {
@@ -71,11 +71,11 @@ public class Producto {
         this.log_activo = log_activo;
     }
 
-    public long getId_usr_regitro() {
+    public String getId_usr_regitro() {
         return id_usr_regitro;
     }
 
-    public void setId_usr_regitro(long id_usr_regitro) {
+    public void setId_usr_regitro(String id_usr_regitro) {
         this.id_usr_regitro = id_usr_regitro;
     }
 
@@ -87,13 +87,13 @@ public class Producto {
         this.fech_Registro = fech_Registro;
     }
 
-    public long getId_Usr_Ult_Edicion() {
+    public String getId_Usr_Ult_Edicion() {
         return id_Usr_Ult_Edicion;
     }
 
-    public void setId_Usr_Ult_Edicion(long id_Usr_Ult_Edicion) {
+    public void setId_Usr_Ult_Edicion(String id_Usr_Ult_Edicion) {
         this.id_Usr_Ult_Edicion = id_Usr_Ult_Edicion;
-    }
+    }   
 
     public Date getFech_Ult_Registro() {
         return fech_Ult_Registro;
@@ -103,7 +103,8 @@ public class Producto {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
 
-    public Producto(int id_Categoria, String rut_Fotografia, double precio, int cnt_minima, float log_activo, long id_usr_regitro, Date fech_Registro, long id_Usr_Ult_Edicion, Date fech_Ult_Registro) {
+    public Producto(int id, int id_Categoria, String rut_Fotografia, double precio, int cnt_minima, float log_activo, String id_usr_regitro, Date fech_Registro, String id_Usr_Ult_Edicion, Date fech_Ult_Registro) {
+        this.id = id;
         this.id_Categoria = id_Categoria;
         this.rut_Fotografia = rut_Fotografia;
         this.precio = precio;
@@ -114,7 +115,5 @@ public class Producto {
         this.id_Usr_Ult_Edicion = id_Usr_Ult_Edicion;
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
-
-        
-            
+                    
 }

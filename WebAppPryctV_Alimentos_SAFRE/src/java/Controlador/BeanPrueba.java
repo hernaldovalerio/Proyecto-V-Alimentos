@@ -25,6 +25,7 @@ public class BeanPrueba implements Serializable {
 
     private int id;
     private String descripcion;
+    private short log_activo;
 
     public int getId() {
         return id;
@@ -41,15 +42,37 @@ public class BeanPrueba implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public short getLog_activo() {
+        return log_activo;
+    }
+
+    public void setLog_activo(short log_activo) {
+        this.log_activo = log_activo;
+    }   
     
     public BeanPrueba() {        
     }
     
+//    public short PasarLogActivo(){
+//        if (log_activo.equals("Activo")) 
+//            return 1;
+//        else
+//            return 0;
+//    }
+    
     public void AgregarPrueba() throws SNMPExceptions, SQLException{
         //Validaciones 
-        Prueba oPrueba = new Prueba(id, descripcion);
+        Prueba oPrueba = new Prueba(id, descripcion, log_activo);
         PruebaDB oPruebaDB = new PruebaDB();
         oPruebaDB.InsertarPrueba(oPrueba);
+    }
+    
+    public void EditarPrueba() throws SNMPExceptions, SQLException{
+        //Validaciones 
+        Prueba oPrueba = new Prueba(id, descripcion, log_activo);
+        PruebaDB oPruebaDB = new PruebaDB();
+        oPruebaDB.EditarPrueba(oPrueba);
     }
     
 }

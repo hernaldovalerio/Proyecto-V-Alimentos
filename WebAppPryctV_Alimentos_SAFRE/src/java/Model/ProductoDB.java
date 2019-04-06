@@ -122,19 +122,20 @@ public class ProductoDB extends Hacienda{
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
              //Se llena el arryaList con los proyectos   
               while (rsPA.next()) {
-                  
+                  int id = rsPA.getInt("ID");
                   int id_Categoria = rsPA.getInt("ID_Categoria");
                   String rut_Fotografia = rsPA.getString("Rut_Fotografia");
                   float precio = rsPA.getInt("Precio");
                   int cnt_Minima = rsPA.getInt("Cnt_Minima");                  
                   float log_Activo = rsPA.getInt("LOG_ACTIVO");
-                  long id_Usr_Registro = rsPA.getLong("ID_Usr_Registro");
+                  String id_Usr_Registro = rsPA.getString("ID_Usr_Registro");
                   Date fecha_Registro = rsPA.getDate("Fech_Registro");
-                  long id_Usr_Ult_Registro = rsPA.getLong("ID_Usr_Ult_Edicion");
+                  String id_Usr_Ult_Registro = rsPA.getString("ID_Usr_Ult_Edicion");
                   Date fecha_Ult_Registro = rsPA.getDate("Fech_Ult_Edicion");
                   
 
                   Producto oProducto = new Producto(
+                          id,
                           id_Categoria, 
                           rut_Fotografia, 
                           precio, 
