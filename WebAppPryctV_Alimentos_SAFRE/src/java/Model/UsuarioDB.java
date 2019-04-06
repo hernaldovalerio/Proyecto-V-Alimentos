@@ -72,8 +72,7 @@ public class UsuarioDB extends Hacienda {
         try {
             sql = "INSERT INTO PERSONA"
                     + "(" +
-                    "ID_Tipo_Persona," +
-		    "ID_Tipo_Identificacion,"  +
+                    "ID_Tipo_Persona," +		    
                     "ID_Horario," +
 		    "Persona_Cliente," +
 		    "Idntf_Persona," + 
@@ -91,17 +90,16 @@ public class UsuarioDB extends Hacienda {
                     ")" +
 		    " VALUES" + 
                     "(" +                                      
-                    "" +pUsuario.getId_Tipo_Persona()+ "" +
-                    "" +pUsuario.getId_tipo_Identificacion()+ "" +
+                    "" +pUsuario.getId_Tipo_Persona()+ "" +                    
                     "" +pUsuario.getId_Horario()+ "" +
-                    "" +pUsuario.getPersona_Cliente()+ "" +
+                    "" +pUsuario.getPersona_cliente()+ "" +
                     "'" +pUsuario.getIdntf_persona()+ "'" +            
 	            "'" +pUsuario.getNmbr_persona()+ "'" +
                     "'" +pUsuario.getAplld_1_persona()+ "'" +
                     "'" +pUsuario.getAplld_2_persona()+ "'" +
                     "'" +pUsuario.getCntrs_persona()+ "'" +
                     "'" +pUsuario.getNmbr_persona()+ "'" +
-                    "'" +pUsuario.getDirc_Principal()+ "'" +                    
+                    "'" +pUsuario.getDirc_principal()+ "'" +                    
                     "" +this.ActivarRegistroBD()+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ "" +                    

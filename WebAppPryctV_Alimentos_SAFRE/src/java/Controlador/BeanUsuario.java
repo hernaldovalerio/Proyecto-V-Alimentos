@@ -27,9 +27,8 @@ import javax.faces.model.SelectItem;
 @Named(value = "beanUsuario")
 @Dependent
 public class BeanUsuario {
-    
-    private int id_Tipo_Persona;
-    private int id_tipo_Identificacion;
+    private int id;
+    private int id_Tipo_Persona;    
     private int id_Horario;
     private float persona_Empleado;    
     private String tipo_Empleado;
@@ -49,20 +48,20 @@ public class BeanUsuario {
     
     //Telefono, correo electronico
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getId_Tipo_Persona() {
         return id_Tipo_Persona;
     }
 
     public void setId_Tipo_Persona(int id_Tipo_Persona) {
         this.id_Tipo_Persona = id_Tipo_Persona;
-    }
-
-    public int getId_tipo_Identificacion() {
-        return id_tipo_Identificacion;
-    }
-
-    public void setId_tipo_Identificacion(int id_tipo_Identificacion) {
-        this.id_tipo_Identificacion = id_tipo_Identificacion;
     }
 
     public int getId_Horario() {
@@ -199,7 +198,7 @@ public class BeanUsuario {
     public boolean AgregarUsuario() throws SNMPExceptions, SQLException{        
         
         //Validaciones 
-        Usuario oUsuario = new Usuario(id_Tipo_Persona, id_tipo_Identificacion, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
+        Usuario oUsuario = new Usuario(id, id_Tipo_Persona, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
         UsuarioDB oUsuarioDB = new UsuarioDB();
         return oUsuarioDB.InsertarUsuario(oUsuario);
     }

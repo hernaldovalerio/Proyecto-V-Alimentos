@@ -14,6 +14,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 /**
  *
@@ -26,6 +27,8 @@ public class BeanPrueba implements Serializable {
     private int id;
     private String descripcion;
     private short log_activo;
+    
+    private String filtro;
 
     public int getId() {
         return id;
@@ -50,6 +53,14 @@ public class BeanPrueba implements Serializable {
     public void setLog_activo(short log_activo) {
         this.log_activo = log_activo;
     }   
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }    
     
     public BeanPrueba() {        
     }
@@ -73,6 +84,22 @@ public class BeanPrueba implements Serializable {
         Prueba oPrueba = new Prueba(id, descripcion, log_activo);
         PruebaDB oPruebaDB = new PruebaDB();
         oPruebaDB.EditarPrueba(oPrueba);
+    }
+    
+    public void EliminarPrueba() throws SNMPExceptions, SQLException{
+        //Validaciones         
+        PruebaDB oPruebaDB = new PruebaDB();
+        oPruebaDB.DesactivarPrueba(id);
+    }
+    
+    public void buscarPrueba()throws SNMPExceptions, SQLException{
+        LinkedList<Prueba> lista_prueba = new LinkedList<Prueba>();
+        PruebaDB oPruebaDB = new PruebaDB();
+        Prueba oPrueba = oPruebaDB.BuscarPrueba(id);
+        this.setId(oPrueba.getId());
+        this.setDescripcion(oPrueba.getDescripcion());
+        this.setLog_activo(oPrueba.getLog_activo());
+        
     }
     
 }
