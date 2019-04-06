@@ -12,6 +12,7 @@ package Model;
 public class Prueba {
     private int id;
     private String descripcion;
+    private short log_activo;
 
     public int getId() {
         return id;
@@ -29,9 +30,18 @@ public class Prueba {
         this.descripcion = descripcion;
     }
 
-    public Prueba(int id, String descripcion) {
+    public short getLog_activo() {
+        return log_activo;
+    }
+
+    public void setLog_activo(short log_activo) {
+        this.log_activo = log_activo;
+    }
+
+    public Prueba(int id, String descripcion, short log_activo) {
         this.id = id;
         this.descripcion = descripcion;
-    }    
+        this.log_activo = log_activo;
+    }        
        
 }

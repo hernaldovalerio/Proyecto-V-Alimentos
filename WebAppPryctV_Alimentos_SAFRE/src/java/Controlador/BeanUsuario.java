@@ -46,6 +46,8 @@ public class BeanUsuario {
     private Date fech_Registro;
     private String id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
+    
+    //Telefono, correo electronico
 
     public int getId_Tipo_Persona() {
         return id_Tipo_Persona;
@@ -194,11 +196,16 @@ public class BeanUsuario {
     public BeanUsuario() {
     }
     
-    public boolean AgregarUsuario() throws SNMPExceptions, SQLException{
+    public boolean AgregarUsuario() throws SNMPExceptions, SQLException{        
+        
         //Validaciones 
         Usuario oUsuario = new Usuario(id_Tipo_Persona, id_tipo_Identificacion, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
         UsuarioDB oUsuarioDB = new UsuarioDB();
         return oUsuarioDB.InsertarUsuario(oUsuario);
+    }
+    
+    public boolean EditarUsuario() throws SNMPExceptions, SQLException{
+        return true;
     }
    
 }

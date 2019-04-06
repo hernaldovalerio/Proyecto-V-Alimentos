@@ -22,17 +22,25 @@ import java.util.Date;
 @Named(value = "beanProducto")
 @SessionScoped
 public class BeanProducto implements Serializable {
-
+    private int id;
     private int id_Categoria;
     private String rut_Fotografia;
     private double precio;
     private int cnt_minima;
     private float log_activo;
-    private long id_usr_regitro;
+    private String id_usr_regitro;
     private Date fech_Registro;
-    private long id_Usr_Ult_Edicion;
+    private String id_Usr_Ult_Edicion;
     private Date fech_Ult_Registro;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getId_Categoria() {
         return id_Categoria;
     }
@@ -73,11 +81,11 @@ public class BeanProducto implements Serializable {
         this.log_activo = log_activo;
     }
 
-    public long getId_usr_regitro() {
+    public String getId_usr_regitro() {
         return id_usr_regitro;
     }
 
-    public void setId_usr_regitro(long id_usr_regitro) {
+    public void setId_usr_regitro(String id_usr_regitro) {
         this.id_usr_regitro = id_usr_regitro;
     }
 
@@ -89,13 +97,14 @@ public class BeanProducto implements Serializable {
         this.fech_Registro = fech_Registro;
     }
 
-    public long getId_Usr_Ult_Edicion() {
+    public String getId_Usr_Ult_Edicion() {
         return id_Usr_Ult_Edicion;
     }
 
-    public void setId_Usr_Ult_Edicion(long id_Usr_Ult_Edicion) {
+    public void setId_Usr_Ult_Edicion(String id_Usr_Ult_Edicion) {
         this.id_Usr_Ult_Edicion = id_Usr_Ult_Edicion;
     }
+   
 
     public Date getFech_Ult_Registro() {
         return fech_Ult_Registro;
@@ -110,7 +119,7 @@ public class BeanProducto implements Serializable {
     
     public boolean AgregarProducto() throws SNMPExceptions, SQLException{
         //Validaciones 
-        Producto oProducto = new Producto(id_Categoria, rut_Fotografia, precio, cnt_minima, log_activo, id_usr_regitro, fech_Registro, id_Usr_Ult_Edicion, fech_Ult_Registro);
+        Producto oProducto = new Producto(id, id_Categoria, rut_Fotografia, precio, cnt_minima, log_activo, id_usr_regitro, fech_Registro, id_Usr_Ult_Edicion, fech_Ult_Registro);
         ProductoDB oProductoDB = new ProductoDB();
         return oProductoDB.InsertarProducto(oProducto);
     }
