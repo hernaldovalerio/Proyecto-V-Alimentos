@@ -59,60 +59,7 @@ and open the template in the editor.
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12 col-sm-4">
-                        <!-- Cuenta -->
-                        <ul class="top-menu text-right list-inline">
-                            <li class="dropdown cart-nav dropdown-slide">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-contact"></i>Cuenta</a>
-                                <div class="dropdown-menu cart-dropdown">
-
-                                    <!-- Iniciar Sesion -->
-                                    <div class="media">
-
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><a href=""><i class="tf-ion-android-home"></i>  Iniciar Sesion</a></h4>
-
-                                        </div><!-- / Iniciar Sesion -->
-
-                                    </div>
-                                    <!-- Nuevo Usuario -->
-                                    <div class="media">
-
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><a href=""><i class="tf-ion-android-person-add"></i>  Nuevo Usuario</a></h4>
-
-                                        </div>
-
-                                    </div><!-- / Nuevo Usuario  
-                                    <!Cerrar Sesion -->
-                                    <div class="media">
-
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><a href="Index.xhtml"> <i class="tf-ion-close-circled"></i>  Cerrar Sesion</a></h4>
-
-                                        </div>
-
-                                    </div><!-- / Cerrar Sesion -->
-                                </div>
-
-
-                            </li>       
-
-                            <li class="dropdown cart-nav dropdown-slide">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-cart"></i>Cesta</a>
-                                <div class="dropdown-menu cart-dropdown">
-
-
-                                    <ul class="text-center cart-buttons">
-                                        <li><a href="" class="btn btn-small">Ver Carro Compras</a></li>
-                                        <li><a href="" class="btn btn-small btn-solid-border">Checkout</a></li>
-                                    </ul>
-                                </div>
-
-                            </li><!-- / Cart -->
-
-                        </ul>
-                    </div>
+                 
                 </div>
             </div>
         </h:form><!-- End Top Header Bar -->
@@ -127,7 +74,7 @@ and open the template in the editor.
                     <ul class="nav navbar-nav">
                         <!-- Home -->
                         <li class="dropdown ">
-                            <a href="index.html">Inicio</a>
+                            <a href="Index.xhtml">Inicio</a>
                         </li><!-- / Home -->
                         <!-- Productos -->
                         <li>
@@ -135,8 +82,9 @@ and open the template in the editor.
                         </li><!-- / Productos -->
                         <!-- Contactenos -->
                         <li>
-                            <a href="Contscto.xhtml">Contactenos</a>
+                            <a href="Contacto.xhtml">Contactenos</a>
                         </li><!-- / Contactenos -->
+
                         <li class="dropdown ">
                             <a href="Index.xhtml">Salir</a>
                         </li>
@@ -148,8 +96,8 @@ and open the template in the editor.
         </nav>
 
         <section class="page-header">
-            <div class="container">
-                <div class="row">
+            
+                <div class="container">
                     <div class="col-md-12">
                         <div class="content">
                             <h1 class="page-name">Registrese</h1>
@@ -160,8 +108,7 @@ and open the template in the editor.
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+             </section>
 
         <h:form class="page-wrapper">
             <div class="contact-section">
@@ -233,9 +180,6 @@ and open the template in the editor.
                                         <h:inputText value="#{beanUsuario.cntrs_persona}" > </h:inputText>
                                     </div>
                                 </div>
-
-
-
 
 
                                 <div class="form-group col-md-10">
@@ -338,6 +282,26 @@ and open the template in the editor.
                                         <h:inputText value="" > </h:inputText>
                                     </div>
                                 </div>
+
+
+                                <div class="form-group col-md-10">
+                                    <h1 class="page-name">Horario de Entrega Preferido</h1>
+                                    <ol class="breadcrumb"/>
+
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                        <label for="inputDiasEntrega">Dias de Entrega</label>
+                                        <select id="inputCanton" class="form-control">
+                                            <f:selectItems value=""/>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputDiasHorario">Horario</label>
+                                        <select id="inputProvincia" class="form-control">
+                                            <f:selectItems value=""/>
+                                        </select>
+                                    </div>
 
 
                                 <div id="mail-success" class="success">
