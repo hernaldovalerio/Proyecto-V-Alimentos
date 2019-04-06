@@ -26,17 +26,17 @@ public class PruebaDB {
     public PruebaDB() {
         super();
     }
-    public boolean InsertarPrueba(Prueba pPrueba)throws SNMPExceptions, SQLException {
+    public boolean InsertarPrueba(Prueba pPrueba)throws SNMPExceptions, SQLException {        
         String sql = "";
         try {
             sql = "INSERT INTO TODO"
                     + "(" +
                     "ID," +                    
-		    "Descripcion,"  +                    
+		    "Descripcion"  +                    
                     ")" +
 		    " VALUES" + 
                     "(" +                                      
-                    "" +pPrueba.getId()+ "" +
+                    "" +pPrueba.getId()+ "," +
                     "'" +pPrueba.getDescripcion()+ "'" +                                        
                     ")";
                     

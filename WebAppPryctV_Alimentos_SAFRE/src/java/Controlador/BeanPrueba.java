@@ -42,15 +42,14 @@ public class BeanPrueba implements Serializable {
         this.descripcion = descripcion;
     }
     
-    public BeanPrueba() {
-        
+    public BeanPrueba() {        
     }
     
-    public boolean AgregarPrueba() throws SNMPExceptions, SQLException{
+    public void AgregarPrueba() throws SNMPExceptions, SQLException{
         //Validaciones 
         Prueba oPrueba = new Prueba(id, descripcion);
         PruebaDB oPruebaDB = new PruebaDB();
-        return oPruebaDB.InsertarPrueba(oPrueba);
+        oPruebaDB.InsertarPrueba(oPrueba);
     }
     
 }
