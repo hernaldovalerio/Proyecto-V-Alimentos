@@ -175,8 +175,8 @@ and open the template in the editor.
                                 <div class="form-group col-md-6">
                                     <label for="inputTipoID">Tipo de Indentificación:</label>
                                     <select id="inputTipoID" class="form-control">
-                                        <option value="Fisica">Fisico</option>
-                                        <option value="Jurídica">Jurídica</option>
+                                        <h:selectOneMenu value="#{beanUsuario.id_Tipo_Persona}">                                                                                   </h:selectOneMenu>
+
                                     </select>
                                 </div>
 
@@ -230,7 +230,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputcontraseña">Contraseña</label>
-                                        <h:inputText value="" > </h:inputText>
+                                        <h:inputText value="#{beanUsuario.cntrs_persona}" > </h:inputText>
                                     </div>
                                 </div>
 
@@ -287,12 +287,51 @@ and open the template in the editor.
                                 <nav class="navbar navbar-light bg-light">
                                     <span class="navbar-brand mb-0 h1">Dirección Entrega</span>
                                 </nav>
-                                
-                                
-                                
-                                
-                                
-                                
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputDirección">Dirección</label>
+                                    <h:inputText value="" > </h:inputText>
+                                </div>
+
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputBarrio">Barrio</label>
+                                    <select id="inputBarrio" class="form-control">
+                                        <f:selectItems value=""/>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputDistrito">Distrito</label>
+                                        <select id="inputDistrito" class="form-control">
+                                            <f:selectItems value=""/>
+                                        </select>
+                                    </div>
+
+
+
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCanton">Cantón</label>
+                                        <select id="inputCanton" class="form-control">
+                                            <f:selectItems value=""/>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputProvincia">Provincia</label>
+                                        <select id="inputProvincia" class="form-control">
+                                            <f:selectItems value=""/>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputcodigoPostal">Código Postal</label>
+                                        <h:inputText value="" > </h:inputText>
+                                    </div>
+                                </div>
+
+
                                 <div id="mail-success" class="success">
                                     Gracias por registrarse.
                                 </div>
