@@ -8,10 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="description" content="Aviato E-Commerce Template"/>
-        <meta name="author" content="Themefisher.com"/>
+    <h:head>
 
         <title>SAFRE</title>
 
@@ -28,12 +25,12 @@ and open the template in the editor.
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/style.css"/>
 
-    </head>
+    </h:head>
 
-    <body id="body">
+    <h:body id="body">
 
         <!-- Start Top Header Bar -->
-        <section class="top-header">
+        <h:form>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-xs-12 col-sm-4">
@@ -96,8 +93,6 @@ and open the template in the editor.
                                         </div>
 
                                     </div><!-- / Cerrar Sesion -->
-
-
                                 </div>
 
 
@@ -116,57 +111,41 @@ and open the template in the editor.
 
                             </li><!-- / Cart -->
 
-                        </ul><!-- / .nav .navbar-nav .navbar-right -->
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section><!-- End Top Header Bar -->
-
+        </h:form><!-- End Top Header Bar -->
 
         <!-- Main Menu Section -->
-        <section class="menu">
-            <nav class="navbar navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <h2 class="menu-title">Main Menu</h2>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
 
-                    </div><!-- / .navbar-header -->
+        <nav class="navbar navigation">
+            <div class="container">
 
-                    <!-- Navbar Links -->
-                    <div id="navbar" class="navbar-collapse collapse text-center">
-                        <ul class="nav navbar-nav">
-                            <!-- Home -->
-                            <li class="dropdown ">
-                                <a href="index.html">Inicio</a>
-                            </li><!-- / Home -->
-                            <!-- Productos -->
-                            <li>
-                                <a href="shop.html">Productos</a>
-                            </li><!-- / Productos -->
-                            <!-- Contactenos -->
-                            <li>
-                                <a href="contact.html">Contactenos</a>
-                            </li><!-- / Contactenos -->
+                <!-- Navbar Links -->
+                <div id="navbar" class="navbar-collapse collapse text-center">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li class="dropdown ">
+                            <a href="index.html">Inicio</a>
+                        </li><!-- / Home -->
+                        <!-- Productos -->
+                        <li>
+                            <a href="Productos.xhtml">Productos</a>
+                        </li><!-- / Productos -->
+                        <!-- Contactenos -->
+                        <li>
+                            <a href="Contscto.xhtml">Contactenos</a>
+                        </li><!-- / Contactenos -->
+                        <li class="dropdown ">
+                            <a href="Index.xhtml">Salir</a>
+                        </li>
 
-                            <!-- Pedido -->
-                            <li class="dropdown dropdown-slide">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Pedidos <span class="tf-ion-ios-arrow-down"></span></a>
+                    </ul><!-- / .nav .navbar-nav -->
 
-                            </li><!-- / Pedido -->
-
-
-                        </ul><!-- / .nav .navbar-nav -->
-
-                    </div><!--/.navbar-collapse -->
-                </div><!-- / .container -->
-            </nav>
-        </section>
+                </div><!--/.navbar-collapse -->
+            </div><!-- / .container -->
+        </nav>
 
         <section class="page-header">
             <div class="container">
@@ -176,7 +155,7 @@ and open the template in the editor.
                             <h1 class="page-name">Registrese</h1>
                             <ol class="breadcrumb">
                                 <li><a href="#">Inicio</a></li>
-                                <li class="active">registrese</li>
+                                <li class="active">Registrese</li>
                             </ol>
                         </div>
                     </div>
@@ -184,10 +163,7 @@ and open the template in the editor.
             </div>
         </section>
 
-
-
-
-        <section class="page-wrapper">
+        <h:form class="page-wrapper">
             <div class="contact-section">
                 <div class="container">
                     <div class="row">
@@ -197,17 +173,18 @@ and open the template in the editor.
 
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputTipoID">Tipo de Indentificación</label>
+                                    <label for="inputTipoID">Tipo de Indentificación:</label>
                                     <select id="inputTipoID" class="form-control">
                                         <option value="Fisica">Fisico</option>
                                         <option value="Jurídica">Jurídica</option>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputCity">Número Identificación</label>
-                                        <input type="text" placeholder="Número Identificación" class="form-control" id="inputCity"/>
+                                        <label for="Número Identificación">Número Identificación:</label>
+                                        <h:inputText value="#{beanUsuario.id_tipo_Identificacion}"> </h:inputText>
+
                                     </div>
                                 </div>
 
@@ -215,101 +192,117 @@ and open the template in the editor.
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Nombre">Nombre</label>
-                                        <input type="text" placeholder="Nombre" class="form-control" id="inputNombre"/>
+                                        <h:inputText value="#{beanUsuario.nmbr_persona}"> </h:inputText>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Primer Apellido">Primer Apellido</label>
-                                        <input type="text" placeholder="Primer Apellido" class="form-control" id="inputPrimerApellido"/>
+                                        <h:inputText value="#{beanUsuario.aplld_1_persona}"> </h:inputText>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Segundo Apellido">Segundo Apellido</label>
-                                        <input type="text" placeholder="Segundo Apellido" class="form-control" id="inputSegundoApellido"/>
-                                 
+                                        <h:inputText value="#{beanUsuario.aplld_2_persona}"> </h:inputText>
+
                                     </div>
-                             
+
                                 </div>
-                                
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputtelefono">Teléfono Principal</label>
-                                        <input type="text" class="form-control" id="inputtelefono" placeholder="2345-5678"/>
-                                                                        
-                                
+                                        <h:inputText value="" > </h:inputText>
+
+
                                         <label for="inputtelefonoOp">Teléfono Opcional</label>
-                                        <input type="text" class="form-control" id="inputtelefonoOp" placeholder="8345-5678"/>
-                                      </div>
-                                    
+                                        <h:inputText value="" > </h:inputText>
+                                    </div>
                                 </div>
-
-
-                             
-                                
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputCorreo">Correo</label>
-                                        <input type="Correo" class="form-control" id="inputCorreo" placeholder="Correo"/>
+                                        <h:inputText value="" > </h:inputText>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputcontraseña">Contraseña</label>
-                                        <input type="contraseña" class="form-control" id="inputContraseña" placeholder="Contraseña"/>
+                                        <h:inputText value="" > </h:inputText>
                                     </div>
+                                </div>
+
+                                <!--Direccion Principal-->
+                                <nav class="navbar navbar-light bg-light">
+                                    <span class="navbar-brand mb-0 h1">Dirección Principal</span>
+                                </nav>
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputDirección">Dirección</label>
+                                    <h:inputText value="" > </h:inputText>
                                 </div>
 
 
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputDirección">Dirección</label>
-                                    <input type="text" class="form-control" id="inputDireccion" placeholder="De la Plaza, 500 metros..."/>
-                                </div>
-                                <div class="form-group col-md-4">
                                     <label for="inputBarrio">Barrio</label>
                                     <select id="inputBarrio" class="form-control">
-                                        <option value="Santa Cecilia">Santa Cecilia</option>
+                                        <f:selectItems value=""/>
                                     </select>
                                 </div>
+
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputDistrito">Distrito</label>
                                         <select id="inputDistrito" class="form-control">
-                                            <option value="San Joaquin">San Joaquin</option>
+                                            <f:selectItems value=""/>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
+
+
+
+                                    <div class="form-group col-md-6">
                                         <label for="inputCanton">Cantón</label>
                                         <select id="inputCanton" class="form-control">
-                                            <option value="Flores">Flores</option>
+                                            <f:selectItems value=""/>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="inputProvincia">Provincia</label>
                                         <select id="inputProvincia" class="form-control">
-                                            <option value="Heredia">Heredia</option>
+                                            <f:selectItems value=""/>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="inputcodigoPostal">Código Postal</label>
-                                        <input type="text" class="form-control" id="inputcodigoPostal" placeholder="Código Postal"/>
+                                        <h:inputText value="" > </h:inputText>
                                     </div>
                                 </div>
 
+                                <!--Direccion Entrega-->
+                                <nav class="navbar navbar-light bg-light">
+                                    <span class="navbar-brand mb-0 h1">Dirección Entrega</span>
+                                </nav>
+                                
+                                
+                                
+                                
+                                
+                                
                                 <div id="mail-success" class="success">
-                                    Gracias. Su cuenta fue creada:)
+                                    Gracias por registrarse.
                                 </div>
 
                                 <div id="mail-fail" class="error">
-                                    Lo siento, ocurrió un error al crear su cuenta. Intente más tarde :(
+                                    Lo siento, ocurrió un error al crear su cuenta. Intente más tarde, o cumuniquese al 506-800-SAFRE
                                 </div>
 
                                 <div id="cf-submit">
-                                    <input type="submit" id="contact-submit" class="btn btn-transparent" value="Crear" action="#"/>
+                                    <h:commandButton  style="margin-right: 200px" type="button" class="btn btn-secondary btn-lg btn-block" value="Crear" action="#{beanUsuario.AgregarUsuario}"></h:commandButton>
 
                                 </div>						
 
@@ -325,7 +318,7 @@ and open the template in the editor.
                 </div>
             </div>
 
-        </section>
+        </h:form>
 
 
         <footer class="footer section text-center">
@@ -361,5 +354,5 @@ and open the template in the editor.
             </div>
         </footer>
 
-    </body>
+    </h:body>
 </html>
