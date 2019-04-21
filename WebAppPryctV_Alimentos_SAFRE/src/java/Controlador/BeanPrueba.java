@@ -9,7 +9,7 @@ import DAO.SNMPExceptions;
 import Model.Prueba;
 import Model.DBPrueba;
 import Model.Usuario;
-import Model.UsuarioDB;
+import Model.DBUsuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

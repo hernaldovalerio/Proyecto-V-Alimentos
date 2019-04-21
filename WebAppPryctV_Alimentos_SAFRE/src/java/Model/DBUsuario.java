@@ -15,20 +15,20 @@ import java.util.LinkedList;
 
 /**
  *
- * @author ucr
+ * @author mi pc
  */
-public class ProductoDB extends Hacienda{
+public class DBUsuario extends Hacienda {
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
 
-    private LinkedList<Producto> listaProducto = new LinkedList<Producto>();
+    private LinkedList<Usuario> listaP = new LinkedList<Usuario>();
     
-    public ProductoDB (Connection conn) {
+    public DBUsuario (Connection conn) {
         accesoDatos = new AccesoDatos();    
         accesoDatos.setDbConn(conn);
     }
     
-    public ProductoDB() {
+    public DBUsuario() {
         super();
     }
     
@@ -41,14 +41,14 @@ public class ProductoDB extends Hacienda{
     public String ID_Usr_RegistroBD() {
         return "604260120";
     }
-        
-    public boolean ConsultarProducto(int ID) throws SNMPExceptions, SQLException{
+            
+    public boolean ConsultarUsuario(int ID) throws SNMPExceptions, SQLException{
         
         boolean existe = false;
         String sql = "";
         try {
             AccesoDatos accesoDatos = new AccesoDatos();
-            sql = "SELECT * FROM PRODUCTO WHERE ID = " + ID;
+            sql = "SELECT * FROM PERSONA WHERE ID = " + ID;
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
             
             if (rsPA.next()) {
@@ -67,15 +67,21 @@ public class ProductoDB extends Hacienda{
         
     }
     
-    public boolean InsertarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
+    public boolean InsertarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
         String sql = "";
         try {
-            sql = "INSERT INTO PRODUCTO"
+            sql = "INSERT INTO PERSONA"
                     + "(" +
-                    "ID_Categoria," +                    
-		    "Rut_Fotografia,"  +                    
-                    "Precio," +                    
-		    "Cnt_Minima," +                    		    
+                    "ID_Tipo_Persona," +		    
+                    "ID_Horario," +
+		    "Persona_Cliente," +
+		    "Idntf_Persona," + 
+                    "Nmbr_Persona," +
+                    "Aplld_1_Persona," +
+                    "Aplld_2_Persona," +
+		    "Contrs_Persona," +
+                    "Nmbr_Empresa," +
+                    "Dirc_Principal," +
                     "LOG_ACTIVO,"+
 		    "ID_Usr_Registro," +
                     "Fech_Registro," +
@@ -83,21 +89,27 @@ public class ProductoDB extends Hacienda{
                     "Fech_Ult_Edicion" +
                     ")" +
 		    " VALUES" + 
-                    "(" +                    
-                    "" +pProducto.getId_Categoria()+ "" +                    
-                    "'" +pProducto.getRut_Fotografia()+ "'" +
-                    "" +pProducto.getPrecio()+ "" +
-                    "" +pProducto.getCnt_minima()+ "" +                                        
+                    "(" +                                      
+                    "" +pUsuario.getId_Tipo_Persona()+ "" +                    
+                    "" +pUsuario.getId_Horario()+ "" +
+                    "" +pUsuario.getPersona_cliente()+ "" +
+                    "'" +pUsuario.getIdntf_persona()+ "'" +            
+	            "'" +pUsuario.getNmbr_persona()+ "'" +
+                    "'" +pUsuario.getAplld_1_persona()+ "'" +
+                    "'" +pUsuario.getAplld_2_persona()+ "'" +
+                    "'" +pUsuario.getCntrs_persona()+ "'" +
+                    "'" +pUsuario.getNmbr_persona()+ "'" +
+                    "'" +pUsuario.getDirc_principal()+ "'" +                    
                     "" +this.ActivarRegistroBD()+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ 
                     ")";
-            
-            accesoDatos.ejecutaSQL(sql);                                                    		
+                    
+            accesoDatos.ejecutaSQL(sql);
             return true;
-                        
+            
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
         } catch (Exception e) {
@@ -106,9 +118,9 @@ public class ProductoDB extends Hacienda{
         }
     }
     
-    public LinkedList<Producto> ProductoTodo() throws SNMPExceptions, SQLException {
+    public LinkedList<Usuario> UsuarioTodo() throws SNMPExceptions, SQLException {
       String select = "";
-      LinkedList<Producto> listaPro = new LinkedList<Producto>();
+      LinkedList<Usuario> listaPro = new LinkedList<Usuario>();
           
           try {
     
@@ -116,30 +128,46 @@ public class ProductoDB extends Hacienda{
               AccesoDatos accesoDatos = new AccesoDatos();  
 
               //Se crea la sentencia de búsqueda
-              select = "select * from PRODUCTO";
+              select = "select * from PERSONA";
                       
               //Se ejecuta la sentencia SQL
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
              //Se llena el arryaList con los proyectos   
               while (rsPA.next()) {
-                  int id = rsPA.getInt("ID");
-                  int id_Categoria = rsPA.getInt("ID_Categoria");
-                  String rut_Fotografia = rsPA.getString("Rut_Fotografia");
-                  float precio = rsPA.getInt("Precio");
-                  int cnt_Minima = rsPA.getInt("Cnt_Minima");                  
-                  float log_Activo = rsPA.getInt("LOG_ACTIVO");
+                  
+                  int id_Tipo_Persona = rsPA.getInt("ID_Tipo_Persona");
+                  int id_Tipo_Identificacion = rsPA.getInt("ID_Tipo_Identificacion");
+                  int id_Horario = rsPA.getInt("ID_Horario");
+                  float persona_Empleado = rsPA.getInt("Persona_Empleado");                  
+                  String tipo_Empleado = rsPA.getString("Tipo_Empleado");
+                  float persona_Cliente = rsPA.getInt("Persona_Cliente");
+                  String idntf_persona = rsPA.getString("Idntf_persona");
+                  String nmbr_persona = rsPA.getString("Nmbr_persona");
+                  String aplld_1_persona = rsPA.getString("Aplld_1_persona");
+                  String aplld_2_persona = rsPA.getString("Aplld_2_persona");
+                  String cntrs_persona = rsPA.getString("Cntrs_persona");
+                  String nmbr_Empresa = rsPA.getString("Nmbr_Empresa");
+                  String dirc_Principal = rsPA.getString("Dirc_Principal");
+                  String log_Activo = rsPA.getString("LOG_ACTIVO");
                   String id_Usr_Registro = rsPA.getString("ID_Usr_Registro");
                   Date fecha_Registro = rsPA.getDate("Fech_Registro");
                   String id_Usr_Ult_Registro = rsPA.getString("ID_Usr_Ult_Edicion");
                   Date fecha_Ult_Registro = rsPA.getDate("Fech_Ult_Edicion");
-                  
 
-                  Producto oProducto = new Producto(
-                          id,
-                          id_Categoria, 
-                          rut_Fotografia, 
-                          precio, 
-                          cnt_Minima,                           
+                  Usuario oUsuario = new Usuario(
+                          id_Tipo_Persona, 
+                          id_Tipo_Identificacion, 
+                          id_Horario, 
+                          persona_Empleado, 
+                          tipo_Empleado, 
+                          persona_Cliente, 
+                          idntf_persona, 
+                          nmbr_persona, 
+                          aplld_1_persona, 
+                          aplld_2_persona, 
+                          cntrs_persona, 
+                          nmbr_Empresa, 
+                          dirc_Principal, 
                           log_Activo, 
                           id_Usr_Registro, 
                           fecha_Registro, 
@@ -147,7 +175,7 @@ public class ProductoDB extends Hacienda{
                           fecha_Ult_Registro
                   );
                           
-                  listaPro.add(oProducto);
+                  listaPro.add(oUsuario);
 
               }
               rsPA.close();
@@ -162,6 +190,5 @@ public class ProductoDB extends Hacienda{
               
           }
           return listaPro;
-      }
-    
+      }    
 }
