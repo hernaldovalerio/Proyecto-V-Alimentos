@@ -5,13 +5,13 @@
  */
 package Controlador;
 
-import DAO.AccesoDatos;
 import DAO.SNMPExceptions;
-import Model.Producto;
-import Model.ProductoDB;
+import Model.CatalogoDia;
+import Model.CatalogoHora;
+import Model.DBCatalogoDia;
+import Model.DBCatalogoHora;
 import Model.Usuario;
 import Model.UsuarioDB;
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
@@ -46,7 +46,15 @@ public class BeanUsuario {
     private String id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
     
-    //Telefono, correo electronico
+    private String telefono_principal;
+    private String telefono_opcional;
+    
+    private String correo_principal;
+    private String correo_opcional;
+    
+    private LinkedList<CatalogoDia> lista_catalogo_dia = new LinkedList<CatalogoDia>();
+    private LinkedList<CatalogoHora> lista_catalogo_hora = new LinkedList<CatalogoHora>();
+        
 
     public int getId() {
         return id;
@@ -191,6 +199,95 @@ public class BeanUsuario {
     public void setFech_Ult_Registro(Date fech_Ult_Registro) {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }  
+
+    public String getTelefono_principal() {
+        return telefono_principal;
+    }
+
+    public void setTelefono_principal(String telefono_principal) {
+        this.telefono_principal = telefono_principal;
+    }
+
+    public String getTelefono_opcional() {
+        return telefono_opcional;
+    }
+
+    public void setTelefono_opcional(String telefono_opcional) {
+        this.telefono_opcional = telefono_opcional;
+    }
+
+    public String getCorreo_principal() {
+        return correo_principal;
+    }
+
+    public void setCorreo_principal(String correo_principal) {
+        this.correo_principal = correo_principal;
+    }
+
+    public String getCorreo_opcional() {
+        return correo_opcional;
+    }
+
+    public void setCorreo_opcional(String correo_opcional) {
+        this.correo_opcional = correo_opcional;
+    }    
+
+    public LinkedList<CatalogoDia> getLista_catalogo_dia() throws SNMPExceptions, SQLException {
+        int catalogo_dia_id=0;
+        String catalogo_dia_descripcion="";        
+        
+        LinkedList<CatalogoDia> lista = new LinkedList<CatalogoDia>();
+        DBCatalogoDia db_catalogo_dia = new DBCatalogoDia();
+        
+        lista = db_catalogo_dia.Lista_Catalogo_Dia();
+        
+        LinkedList resultList = new LinkedList();
+        resultList.add(new SelectItem(0, "Dia entrega"));
+        
+        for (Iterator iter= lista.iterator();
+                iter.hasNext();) {
+        
+            CatalogoDia catalogo_dia = (CatalogoDia) iter.next();
+            catalogo_dia_id = catalogo_dia.getId();            
+            catalogo_dia_descripcion = catalogo_dia.getDscrp_dia();                        
+            
+            resultList.add(new SelectItem(catalogo_dia_id, catalogo_dia_descripcion));
+         }         
+         return resultList; 
+    }
+
+    public void setLista_catalogo_dia(LinkedList<CatalogoDia> lista_catalogo_dia) {
+        this.lista_catalogo_dia = lista_catalogo_dia;
+    }
+
+    public LinkedList<CatalogoHora> getLista_catalogo_hora() throws SNMPExceptions, SQLException {
+        int catalogo_hora_id=0;
+        String catalogo_hora_descripcion="";        
+        
+        LinkedList<CatalogoHora> lista_catalogo_hora = new LinkedList<CatalogoHora>();
+        DBCatalogoHora db_catalogo_hora = new DBCatalogoHora();
+        
+        lista_catalogo_hora = db_catalogo_hora.Lista_Catalogo_Hora();
+        
+        LinkedList resultList = new LinkedList();
+        resultList.add(new SelectItem(0, "Hora entrega"));
+        
+        for (Iterator iter= lista_catalogo_hora.iterator();
+                iter.hasNext();) {
+        
+            CatalogoHora catalogo_hora = (CatalogoHora) iter.next();
+            catalogo_hora_id = catalogo_hora.getId();            
+            catalogo_hora_descripcion = catalogo_hora.getDscrp_hora();                        
+            
+            resultList.add(new SelectItem(catalogo_hora_id, catalogo_hora_descripcion));
+         }         
+         return resultList; 
+    }
+
+    public void setLista_catalogo_hora(LinkedList<CatalogoHora> lista_catalogo_hora) {
+        this.lista_catalogo_hora = lista_catalogo_hora;
+    }
+    
     
     public BeanUsuario() {
     }

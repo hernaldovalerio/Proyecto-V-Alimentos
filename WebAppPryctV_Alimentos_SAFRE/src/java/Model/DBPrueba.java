@@ -17,16 +17,16 @@ import java.util.LinkedList;
  *
  * @author mi pc
  */
-public class PruebaDB {
+public class DBPrueba {
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
     
-    public PruebaDB (Connection conn) {
+    public DBPrueba (Connection conn) {
         accesoDatos = new AccesoDatos();    
         accesoDatos.setDbConn(conn);
     }
     
-    public PruebaDB() {
+    public DBPrueba() {
         super();
     }
     public boolean InsertarPrueba(Prueba pPrueba)throws SNMPExceptions, SQLException {        
@@ -111,7 +111,7 @@ public class PruebaDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "select * from TODO where id = " + Math.PI;
+                      "select * from TODO where id = " + pId;
              
               //Se ejecuta la sentencia SQL
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
@@ -137,4 +137,59 @@ public class PruebaDB {
           }      
           return oPrueba;
     }
+    
+    public  LinkedList<Prueba> Todo() throws SNMPExceptions, 
+            SQLException {
+      String select = "";
+      LinkedList<Prueba> listaPrueba = new LinkedList<Prueba>();
+          
+          try {
+    
+              //Se instancia la clase de acceso a datos
+              AccesoDatos accesoDatos = new AccesoDatos();  
+
+              /*Se crea la sentencia de búsqueda
+              select = 
+                      "SELECT COD_PROVINCIA,DSC_CORTA_PROVINCIA,"
+                      + "DSC_PROVINCIA,LOG_ACTIVO FROM Provincias";
+              //Se ejecuta la sentencia SQL
+              ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
+             //Se llena el arryaList con los proyectos   
+              while (rsPA.next()) {
+
+                float codigoProvincia = rsPA.getFloat("COD_PROVINCIA");
+                String dscCortaProvincia = rsPA.getString(""
+                        + "DSC_CORTA_PROVINCIA");
+                String dscProvincia = rsPA.getString("DSC_PROVINCIA");
+                float logActivo= rsPA.getFloat("LOG_ACTIVO");
+                
+                Provincia perProvincia = new Provincia(codigoProvincia, 
+                            dscCortaProvincia, dscProvincia,logActivo);
+                listaPro.add(perProvincia);
+              }
+              rsPA.close();
+                */
+              Prueba prueba1 = new Prueba(1, "prueba1", (short)1);                            
+              Prueba prueba2 = new Prueba(2, "prueba2", (short)1);
+              Prueba prueba3 = new Prueba(3, "prueba3", (short)1);
+              Prueba prueba4 = new Prueba(4, "prueba4", (short)1);
+              
+              listaPrueba.add(prueba1);
+              listaPrueba.add(prueba2);
+              listaPrueba.add(prueba3);
+              listaPrueba.add(prueba4);
+             
+              /*
+          } catch (SQLException e) {
+              throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                      e.getMessage(), e.getErrorCode());*/
+          }catch (Exception e) {
+              throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                      e.getMessage());
+          } finally {
+              
+          }
+          return listaPrueba;
+      }
 }
+
