@@ -22,6 +22,11 @@
                     <f:selectItem itemLabel="Descripcion" itemValue="0"></f:selectItem>
                 </h:selectOneMenu>
             </p>                
+            <p>CargarCombo
+                <h:selectOneMenu>                    
+                    <f:selectItems value="#{beanPrueba.lista_prueba}"></f:selectItems>
+                </h:selectOneMenu>
+            </p>
             <BR><h:commandButton value="Agregar" action="#{beanPrueba.AgregarPrueba()}"></h:commandButton></BR>
             <BR><h:commandButton value="Editar" action="#{beanPrueba.EditarPrueba()}"></h:commandButton></BR>
             <BR><h:commandButton value="Eliminar" action="#{beanPrueba.EliminarPrueba}"></h:commandButton></BR>

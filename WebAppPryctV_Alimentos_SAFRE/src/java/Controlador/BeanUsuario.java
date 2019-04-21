@@ -12,6 +12,7 @@ import Model.DBCatalogoDia;
 import Model.DBCatalogoHora;
 import Model.Usuario;
 import Model.DBUsuario;
+import Model.TipoPersona;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
@@ -54,7 +55,7 @@ public class BeanUsuario {
     
     private LinkedList<CatalogoDia> lista_catalogo_dia = new LinkedList<CatalogoDia>();
     private LinkedList<CatalogoHora> lista_catalogo_hora = new LinkedList<CatalogoHora>();
-        
+    private LinkedList<TipoPersona> lista_tipo_persona = new LinkedList<TipoPersona>();        
 
     public int getId() {
         return id;
@@ -287,8 +288,35 @@ public class BeanUsuario {
     public void setLista_catalogo_hora(LinkedList<CatalogoHora> lista_catalogo_hora) {
         this.lista_catalogo_hora = lista_catalogo_hora;
     }
-    
-    
+
+    public LinkedList<TipoPersona> getLista_tipo_persona() throws SNMPExceptions, SQLException {
+        int catalogo_hora_id=0;
+        String catalogo_hora_descripcion="";        
+        
+        LinkedList<CatalogoHora> lista_catalogo_hora = new LinkedList<CatalogoHora>();
+        DBCatalogoHora db_catalogo_hora = new DBCatalogoHora();
+        
+        lista_catalogo_hora = db_catalogo_hora.Lista_Catalogo_Hora();
+        
+        LinkedList resultList = new LinkedList();
+        resultList.add(new SelectItem(0, "Hora entrega"));
+        
+        for (Iterator iter= lista_catalogo_hora.iterator();
+                iter.hasNext();) {
+        
+            CatalogoHora catalogo_hora = (CatalogoHora) iter.next();
+            catalogo_hora_id = catalogo_hora.getId();            
+            catalogo_hora_descripcion = catalogo_hora.getDscrp_hora();                        
+            
+            resultList.add(new SelectItem(catalogo_hora_id, catalogo_hora_descripcion));
+         }         
+         return resultList; 
+    }
+
+    public void setLista_tipo_persona(LinkedList<TipoPersona> lista_tipo_persona) {
+        this.lista_tipo_persona = lista_tipo_persona;
+    }
+        
     public BeanUsuario() {
     }
     
