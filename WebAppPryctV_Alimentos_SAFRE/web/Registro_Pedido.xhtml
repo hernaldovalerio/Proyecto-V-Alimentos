@@ -9,9 +9,6 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="description" content="Aviato E-Commerce Template"/>
-        <meta name="author" content="Themefisher.com"/>
 
         <title>SAFRE</title>
 
@@ -33,7 +30,7 @@ and open the template in the editor.
     <h:body id="body">
 
         <!-- Start Top Header Bar -->
-        <section class="top-header">
+        <h:form>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-xs-12 col-sm-4">
@@ -62,116 +59,67 @@ and open the template in the editor.
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12 col-sm-4">
-                        <!-- Cuenta -->
-                        <ul class="top-menu text-right list-inline">
-                            <li class="dropdown cart-nav dropdown-slide">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-contact"></i>Cuenta</a>
-                                <div class="dropdown-menu cart-dropdown">
 
-                                    <!-- Iniciar Sesion -->
-                                    <div class="media">
-
-
-
-                                    </div>
-
-
-                                    <div class="media">
-
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><a href="Index.xhtml"> <i class="tf-ion-close-circled"></i>  Cerrar Sesion</a></h4>
-
-                                        </div>
-
-                                    </div><!-- / Cerrar Sesion -->
-
-
-                                </div>
-
-
-                            </li>       
-
-
-
-                        </ul><!-- / .nav .navbar-nav .navbar-right -->
-                    </div>
                 </div>
             </div>
-        </section><!-- End Top Header Bar -->
-
+        </h:form><!-- End Top Header Bar -->
 
         <!-- Main Menu Section -->
-        <section class="menu">
-            <nav class="navbar navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <h2 class="menu-title">Main Menu</h2>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
 
-                    </div><!-- / .navbar-header -->
+        <nav class="navbar navigation">
+            <div class="container">
 
-                    <!-- Navbar Links -->
-                    <div id="navbar" class="navbar-collapse collapse text-center">
-                        <ul class="nav navbar-nav">
-                            <!-- Home -->
-                            <li class="dropdown ">
-                                <a href="Index.xhtml">Inicio</a>
-                            </li><!-- / Home -->
-                            <!-- Productos -->
-                            <li>
-                                <a href="shop.html">Mantenimientos</a>
-                            </li><!-- / Productos -->
-                            <!-- Contactenos -->
-                            <li>
-                                <a href="contact.html">Pedidos</a>
-                            </li><!-- / Contactenos -->
+                <!-- Navbar Links -->
+                <div id="navbar" class="navbar-collapse collapse text-center">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li class="dropdown ">
+                            <a href="Index.xhtml">Inicio</a>
+                        </li><!-- / Home -->
+                        <!-- Productos -->
+                        <li>
+                            <a href="Productos.xhtml">Productos</a>
+                        </li><!-- / Productos -->
+                        <!-- Contactenos -->
+                        <li>
+                            <a href="Contacto.xhtml">Contactenos</a>
+                        </li><!-- / Contactenos -->
 
-                            <li>
-                                <a href="contact.html">Reportes</a>
-                            </li><!-- / Contactenos -->
+                        <li class="dropdown ">
+                            <a href="Index.xhtml">Salir</a>
+                        </li>
 
-                            <li>
-                                <a href="Index.xhtml">Salir</a>
-                            </li><!-- / Contactenos -->
+                    </ul><!-- / .nav .navbar-nav -->
 
-
-                        </ul><!-- / .nav .navbar-nav -->
-
-                    </div><!--/.navbar-collapse -->
-                </div><!-- / .container -->
-            </nav>
-        </section>
+                </div><!--/.navbar-collapse -->
+            </div><!-- / .container -->
+        </nav>
 
         <section class="page-header">
+
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content">
-                            <h1 class="page-name">Mantenimiento Usuario</h1 >
-                        </div>
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">Registro de Pedidos</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#">Pedido</a></li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </section>
-
         <section >
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BUSCAR" action="#{bean}" ></h:commandButton>
+
 
                         <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="NUEVO" action="#{bean}" ></h:commandButton>
 
-                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="EDITAR" action="#{bean}" ></h:commandButton>
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BUSCAR" action="#{bean}" ></h:commandButton>
 
-                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BORRAR" action="#{bean}" ></h:commandButton>
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="EDITAR" action="#{bean}" ></h:commandButton>
 
                         <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="GUARDAR" action="#{bean}" ></h:commandButton>
 
@@ -184,92 +132,72 @@ and open the template in the editor.
             </div>
         </section>
 
-        <section class="page-wrapper">
+        <h:form class="page-wrapper">
             <div class="contact-section">
                 <div class="container">
                     <div class="row">
-
                         <!-- Contact Form -->
                         <div class="contact-form col-md-6 " >
-                            <h:form id="contact-form"  >
+                            <form id="contact-form" method="post" action="" role="form">
 
 
-                                <div class="form-group col-md-10">
-                                    <label for="inputTipoID">Tipo de Indentificación</label>
-
+                                <div class="form-group col-md-6">
+                                    <label for="inputTipoID">Tipo de Indentificación:</label>
                                     <select id="inputTipoID" class="form-control">
-                                        <option value="Fisica">Fisico</option>
-                                        <option value="Jurídica">Jurídica</option>
+                                        <h:selectOneMenu value="#{bean}">                                                                                   </h:selectOneMenu>
+
                                     </select>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputCity">Número Identificación</label>
-                                        <input type="text" placeholder="Número Identificación" class="form-control" id="inputCity"/>
+                                        <label for="Número Identificación">Número Identificación:</label>
+                                        <h:inputText value="#{beanUsuario.idntf_persona}"> </h:inputText>
+
                                     </div>
                                 </div>
-
-                                <div class="form-group col-md-4">
-                                    <label for="inputBarrio">Tipo Usuario</label>
-                                    <select id="inputBarrio" class="form-control">
-                                        <option value="Cliente">Cliente</option>
-                                        <option value="Cliente">Empleado</option>
-                                    </select>
-                                </div>
-
-
 
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Nombre">Nombre</label>
-                                        <input type="text" placeholder="Nombre" class="form-control" id="inputNombre"/>
+                                        <h:inputText value="#{beanUsuario.nmbr_persona}"> </h:inputText>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Primer Apellido">Primer Apellido</label>
-                                        <input type="text" placeholder="Primer Apellido" class="form-control" id="inputPrimerApellido"/>
+                                        <h:inputText value="#{beanUsuario.aplld_1_persona}"> </h:inputText>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Segundo Apellido">Segundo Apellido</label>
-                                        <input type="text" placeholder="Segundo Apellido" class="form-control" id="inputSegundoApellido"/>
+                                        <h:inputText value="#{beanUsuario.aplld_2_persona}"> </h:inputText>
 
                                     </div>
 
                                 </div>
-
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputtelefono">Teléfono Principal</label>
-                                        <input type="text" class="form-control" id="inputtelefono" placeholder="2345-5678"/>
+                                        <h:inputText value="" > </h:inputText>
 
 
                                         <label for="inputtelefonoOp">Teléfono Opcional</label>
-                                        <input type="text" class="form-control" id="inputtelefonoOp" placeholder="8345-5678"/>
+                                        <h:inputText value="" > </h:inputText>
                                     </div>
-
                                 </div>
-
-
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputCorreo">Correo</label>
-                                        <input type="Correo" class="form-control" id="inputCorreo" placeholder="Correo"/>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputcontraseña">Contraseña</label>
-                                        <input type="contraseña" class="form-control" id="inputContraseña" placeholder="Contraseña"/>
+                                        <h:inputText value="" > </h:inputText>
                                     </div>
                                 </div>
-
 
 
                                 <div class="form-group col-md-10">
@@ -393,8 +321,80 @@ and open the template in the editor.
                                     </select>
                                 </div>
 
-                            </h:form>
+
+
+
+                            </form>
                         </div>
+
+                        <section class="page-wrapper">
+                            <div class="contact-section">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <!-- Contact Form -->
+                                        <div class="contact-form col-md-6 " >
+                                            <h:form id="contact-form" >
+
+
+                                                <div class="form-group col-md-10">
+                                                    <label for="inputTipoID">Tipo de Producto</label>
+
+                                                    <select id="inputTipoID" class="form-control">
+                                                        <option value="Alimentos">Alimentos</option>
+                                                        <option value="Bebidas">Bebidas</option>
+                                                        <option value="Postres">Postres</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCity">Nombre Producto</label>
+                                                        <input type="text" placeholder="Productos" class="form-control" id="inputCity" action="#{bean}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCity">Precio</label>
+                                                        <input type="text" placeholder="Precio" class="form-control" id="inputCity" action="#{bean}"/>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="Cantidad">Cantidad</label>
+                                                        <input type="text" placeholder="Cantidad" class="form-control" id="inputNombre" action="#{bean}"/>
+                                                    </div>
+                                                </div>
+
+                                                <table style="width:100%">
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Cantidad</th> 
+                                                        <th>Precio</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jill</td>
+                                                        <td>Smith</td> 
+                                                        <td>50</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Eve</td>
+                                                        <td>Jackson</td> 
+                                                        <td>94</td>
+                                                    </tr>
+                                                </table>
+
+                                            </h:form>
+                                        </div>   
+                                    </div>   
+                                </div>   
+                            </div>   
+
+                        </section>
                         <!-- ./End Contact Form -->
 
 
@@ -402,7 +402,8 @@ and open the template in the editor.
                 </div>
             </div>
 
-        </section>
+        </h:form>
+
 
         <footer class="footer section text-center">
             <div class="container">
@@ -439,4 +440,3 @@ and open the template in the editor.
 
     </h:body>
 </html>
-

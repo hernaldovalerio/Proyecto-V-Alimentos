@@ -8,7 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="description" content="Aviato E-Commerce Template"/>
         <meta name="author" content="Themefisher.com"/>
@@ -28,9 +28,9 @@ and open the template in the editor.
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/style.css"/>
 
-    </h:head>
+    </head>
 
-    <h:body id="body">
+    <body id="body">
 
         <!-- Start Top Header Bar -->
         <section class="top-header">
@@ -153,7 +153,7 @@ and open the template in the editor.
                 <div class="row">
                     <div class="col-md-12">
                         <div class="content">
-                            <h1 class="page-name">Mantenimiento Usuario</h1 >
+                            <h1 class="page-name">Registro Productos</h1 >
                         </div>
                     </div>
                 </div>
@@ -165,13 +165,11 @@ and open the template in the editor.
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BUSCAR" action="#{bean}" ></h:commandButton>
+                        
 
                         <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="NUEVO" action="#{bean}" ></h:commandButton>
 
                         <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="EDITAR" action="#{bean}" ></h:commandButton>
-
-                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BORRAR" action="#{bean}" ></h:commandButton>
 
                         <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="GUARDAR" action="#{bean}" ></h:commandButton>
 
@@ -191,216 +189,66 @@ and open the template in the editor.
 
                         <!-- Contact Form -->
                         <div class="contact-form col-md-6 " >
-                            <h:form id="contact-form"  >
+                            <h:form id="contact-form" >
 
 
                                 <div class="form-group col-md-10">
-                                    <label for="inputTipoID">Tipo de Indentificación</label>
+                                    <label for="inputTipoID">Tipo de Producto</label>
 
                                     <select id="inputTipoID" class="form-control">
-                                        <option value="Fisica">Fisico</option>
-                                        <option value="Jurídica">Jurídica</option>
+                                        <option value="Alimentos">Alimentos</option>
+                                        <option value="Bebidas">Bebidas</option>
+                                        <option value="Postres">Postres</option>
                                     </select>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputCity">Número Identificación</label>
-                                        <input type="text" placeholder="Número Identificación" class="form-control" id="inputCity"/>
+                                        <label for="inputCity">Nombre Producto</label>
+                                        <input type="text" placeholder="Productos" class="form-control" id="inputCity" action="#{bean}"/>
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-4">
-                                    <label for="inputBarrio">Tipo Usuario</label>
-                                    <select id="inputBarrio" class="form-control">
-                                        <option value="Cliente">Cliente</option>
-                                        <option value="Cliente">Empleado</option>
-                                    </select>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Imagen</label>
+                                        <input type="text" placeholder="Imagen" class="img-responsive" id="inputCity" action="#{bean}"/>  
+                                        <form>
+                                            <h:commandButton  style="margin-right:100px" type="button" class="btn-group-xs" value="Agregar Imagen" action="#{beanUsuario.AgregarUsuario}"></h:commandButton>
+                                        </form>
+                                    </div>
                                 </div>
+
+   <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Precio</label>
+                                        <input type="text" placeholder="Precio" class="form-control" id="inputCity" action="#{bean}"/>
+                                    </div>
+   </div>
 
 
 
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="Nombre">Nombre</label>
-                                        <input type="text" placeholder="Nombre" class="form-control" id="inputNombre"/>
+                                        <label for="Cantidad">Cantidad</label>
+                                        <input type="text" placeholder="Cantidad" class="form-control" id="inputNombre" action="#{bean}"/>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="Primer Apellido">Primer Apellido</label>
-                                        <input type="text" placeholder="Primer Apellido" class="form-control" id="inputPrimerApellido"/>
+                                        <label for="Cantidad Minima">Cantidad Minima</label>
+                                        <input type="text" placeholder="Cantidad Minima" class="form-control" id="inputNombre" action="#{bean}"/>
                                     </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Segundo Apellido">Segundo Apellido</label>
-                                        <input type="text" placeholder="Segundo Apellido" class="form-control" id="inputSegundoApellido"/>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputtelefono">Teléfono Principal</label>
-                                        <input type="text" class="form-control" id="inputtelefono" placeholder="2345-5678"/>
-
-
-                                        <label for="inputtelefonoOp">Teléfono Opcional</label>
-                                        <input type="text" class="form-control" id="inputtelefonoOp" placeholder="8345-5678"/>
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCorreo">Correo</label>
-                                        <input type="Correo" class="form-control" id="inputCorreo" placeholder="Correo"/>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputcontraseña">Contraseña</label>
-                                        <input type="contraseña" class="form-control" id="inputContraseña" placeholder="Contraseña"/>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group col-md-10">
-                                    <h1 class="page-name">Dirección Principal</h1>
-                                    <ol class="breadcrumb">
-
-                                    </ol>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputDirección">Dirección</label>
-                                    <h:inputText value="" > </h:inputText>
-                                </div>
-
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputBarrio">Barrio</label>
-                                    <select id="inputBarrio" class="form-control">
-                                        <f:selectItems value=""/>
-                                    </select>
-                                </div>
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputDistrito">Distrito</label>
-                                        <select id="inputDistrito" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCanton">Cantón</label>
-                                        <select id="inputCanton" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputProvincia">Provincia</label>
-                                        <select id="inputProvincia" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputcodigoPostal">Código Postal</label>
-                                        <h:inputText value="" > </h:inputText>
-                                    </div>
-                                </div>
-
-                                <!--Direccion Entrega-->
-                                <div class="form-group col-md-10">
-                                    <h1 class="page-name">Dirección Entrega</h1>
-                                    <ol class="breadcrumb">
-
-                                    </ol>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputDirección">Dirección</label>
-                                    <h:inputText value="" > </h:inputText>
-                                </div>
-
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputBarrio">Barrio</label>
-                                    <select id="inputBarrio" class="form-control">
-                                        <f:selectItems value=""/>
-                                    </select>
-                                </div>
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputDistrito">Distrito</label>
-                                        <select id="inputDistrito" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCanton">Cantón</label>
-                                        <select id="inputCanton" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputProvincia">Provincia</label>
-                                        <select id="inputProvincia" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputcodigoPostal">Código Postal</label>
-                                        <h:inputText value="" > </h:inputText>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group col-md-10">
-                                    <h1 class="page-name">Horario de Entrega Preferido</h1>
-                                    <ol class="breadcrumb"/>
-
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputDiasEntrega">Dias de Entrega</label>
-                                    <select id="inputCanton" class="form-control">
-                                        <f:selectItems value=""/>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputDiasHorario">Horario</label>
-                                    <select id="inputProvincia" class="form-control">
-                                        <f:selectItems value=""/>
-                                    </select>
-                                </div>
+                                </div>            
 
                             </h:form>
-                        </div>
-                        <!-- ./End Contact Form -->
-
-
-                    </div>
-                </div>
-            </div>
+                        </div>   
+                    </div>   
+                </div>   
+            </div>   
 
         </section>
 
@@ -437,6 +285,6 @@ and open the template in the editor.
             </div>
         </footer>
 
-    </h:body>
+    </body>
 </html>
 
