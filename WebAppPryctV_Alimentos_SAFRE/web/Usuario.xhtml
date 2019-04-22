@@ -294,15 +294,16 @@ and open the template in the editor.
                                 
                                 <div class="form-group col-md-6">
                                         <label for="inputDiasEntrega">Dias de Entrega</label>
-                                        <select id="inputCanton" class="form-control">
+                                        <h:selectOneMenu value="#{beanUsuario.entrega_dia}">
                                             <f:selectItems value="#{beanUsuario.lista_catalogo_dia}"/>
-                                        </select>
+                                        </h:selectOneMenu>                                            
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputDiasHorario">Horario</label>
-                                        <select id="inputProvincia" class="form-control">
+                                        <h:selectOneMenu value="#{beanUsuario.entrega_hora}">
                                             <f:selectItems value="#{beanUsuario.lista_catalogo_hora}"/>
-                                        </select>
+                                        </h:selectOneMenu>                                            
+
                                     </div>
 
 

@@ -29,9 +29,11 @@ import javax.faces.model.SelectItem;
 @Dependent
 public class BeanUsuario {
     private int id;
-    private int id_Tipo_Persona;    
+    private int id_Tipo_Persona;       
+    private float persona_Empleado; 
     private int id_Horario;
-    private float persona_Empleado;    
+    private String entrega_dia;
+    private String entrega_hora;
     private String tipo_Empleado;
     private float Persona_Cliente;
     private String idntf_persona;
@@ -71,8 +73,16 @@ public class BeanUsuario {
 
     public void setId_Tipo_Persona(int id_Tipo_Persona) {
         this.id_Tipo_Persona = id_Tipo_Persona;
+   }
+
+    public float getPersona_Empleado() {
+        return persona_Empleado;
     }
 
+    public void setPersona_Empleado(float persona_Empleado) {
+        this.persona_Empleado = persona_Empleado;
+    }
+    
     public int getId_Horario() {
         return id_Horario;
     }
@@ -81,12 +91,20 @@ public class BeanUsuario {
         this.id_Horario = id_Horario;
     }
 
-    public float getPersona_Empleado() {
-        return persona_Empleado;
+    public String getEntrega_dia() {
+        return entrega_dia;
     }
 
-    public void setPersona_Empleado(float persona_Empleado) {
-        this.persona_Empleado = persona_Empleado;
+    public void setEntrega_dia(String entrega_dia) {
+        this.entrega_dia = entrega_dia;
+    }
+
+    public String getEntrega_hora() {
+        return entrega_hora;
+    }
+
+    public void setEntrega_hora(String entrega_hora) {
+        this.entrega_hora = entrega_hora;
     }
 
     public String getTipo_Empleado() {
@@ -330,6 +348,6 @@ public class BeanUsuario {
     
     public boolean EditarUsuario() throws SNMPExceptions, SQLException{
         return true;
-    }
+    }   
    
 }
