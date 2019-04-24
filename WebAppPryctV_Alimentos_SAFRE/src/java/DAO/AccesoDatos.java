@@ -63,7 +63,7 @@ public class AccesoDatos implements Serializable {
             //Crear el Driver para la conexion           
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 <<<<<<< HEAD
-            dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pryctV_WebAlimentos1", "dramirez", "Red2019");
+            dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pryctV_WebAlimentos1", "sa", "123456");
 =======
             dbConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=pryctV_WebAlimentos1", "sa", "123456");
 >>>>>>> origin/master
