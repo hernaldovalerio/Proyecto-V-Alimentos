@@ -14,27 +14,26 @@ import java.util.LinkedList;
 
 /**
  *
- * @author T7
+ * @author Estudiante
  */
-public class DBCatalogoDia {
-    
+public class DBTipoPersona {
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
 
-    public DBCatalogoDia(Connection conn) {
+    public DBTipoPersona(Connection conn) {
         accesoDatos = new AccesoDatos();    
         accesoDatos.setDbConn(conn);
     }
     
-    public DBCatalogoDia(){
+    public DBTipoPersona(){
         super();
     }
     
     
     
-    public  LinkedList<CatalogoDia> Lista_Catalogo_Dia() throws SNMPExceptions, SQLException {
+    public  LinkedList<TipoPersona> Lista_Tipo_Persona() throws SNMPExceptions, SQLException {
       String select = "";
-      LinkedList<CatalogoDia> catalogo_dia_lista = new LinkedList<CatalogoDia>();
+      LinkedList<TipoPersona> catalogo_dia_lista = new LinkedList<TipoPersona>();
           
           try {    
               //Se instancia la clase de acceso a datos
@@ -42,17 +41,17 @@ public class DBCatalogoDia {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "select ID, Dscrp_Dia from CATALOGO_DIA";                      
+                      "select ID, Dscrp_Tipo_Persona from TIPO_PERSONA";                      
               //Se ejecuta la sentencia SQL
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
              //Se llena el arryaList con los proyectos   
               while (rsPA.next()) {
 
-                int dia_id = rsPA.getInt("ID");
-                String dia_dscrp = rsPA.getString("Dscrp_Dia");                                
+                short id = rsPA.getShort("ID");
+                String dscrp = rsPA.getString("Dscrp_Tipo_Persona");                                
                 
-                CatalogoDia catalogo_dia = new CatalogoDia(dia_id, dia_dscrp);
-                catalogo_dia_lista.add(catalogo_dia);
+                TipoPersona tipo_persona = new TipoPersona(id, dscrp);
+                catalogo_dia_lista.add(tipo_persona);
               }
               rsPA.close();
                                                          

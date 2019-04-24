@@ -41,6 +41,41 @@ public class DBUsuario extends Hacienda {
     public String ID_Usr_RegistroBD() {
         return "604260120";
     }
+    
+    public boolean ActualizarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
+        String sql = "";
+        try {
+            sql = "UPDATE PERSONA SET" +                                        
+		    " ID_Tipo_Persona="  + pUsuario.getId_Tipo_Persona()+                                       
+                    " ID_Horario=" + pUsuario.getId_Horario()+                   
+		    " Persona_Empleado=" + pUsuario.getPersona_empleado()+                   		    
+                    " Tipo_Empleado=" + pUsuario.getTipo_empleado()+                   		    
+                    " Persona_Cliente=" + pUsuario.getPersona_cliente()+                      
+                    " Idntf_Persona=" + pUsuario.getIdntf_persona()+                   		    
+                    " Nmbr_Persona=" + pUsuario.getNmbr_persona() +                   		    
+                    " Aplld_1_Persona=" + pUsuario.getAplld_1_persona()+                   		    
+                    " Aplld_2_Persona=" + pUsuario.getAplld_2_persona()+                          
+                    " Contrs_Persona=" + pUsuario.getCntrs_persona()+                   		    
+                    " Nmbr_Empresa=" + pUsuario.getDscrp_empresa()+                   		    
+                    " Dirc_Principal=" + pUsuario.getDirc_principal()+                   		                        
+                    " LOG_ACTIVO="+ pUsuario.getLog_activo()+                     
+		    " ID_Usr_Registro=" + this.ID_Usr_RegistroBD()+ 
+                    " Fech_Registro=" + "GETDATE()"+
+                    " ID_Usr_Ult_Edicion=" + this.ID_Usr_RegistroBD()+ 
+                    " Fech_Ult_Edicion=" +"GETDATE()" +
+                    " WHERE ID = "+ pUsuario.getId();
+                                                                                                                                                           		                                                    
+            accesoDatos.ejecutaSQL(sql);                                                    		
+            return true;
+                        
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+    }                       
+    
             
     public Usuario ConsultarUsuario(int ID) throws SNMPExceptions, SQLException{
         
@@ -51,8 +86,7 @@ public class DBUsuario extends Hacienda {
             sql = "SELECT * FROM PERSONA WHERE ID = " + ID;
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
             
-            while (rsPA.next()) {                                                                                          
-
+            if (rsPA.next()) {                                                                                          
                 int id = rsPA.getInt("ID");
                 int id_tipo_persona = rsPA.getInt("ID_Tipo_Persona");
                 int id_horario = rsPA.getInt("ID_Horario");                
@@ -87,6 +121,28 @@ public class DBUsuario extends Hacienda {
         
     }
     
+    public boolean DesactivarUsuario(int pId)throws SNMPExceptions, SQLException{
+        String sql = "";
+        try {                            
+            sql = "UPDATE PERSONA" +
+                    " set" +
+                    " LOG_ACTIVO" +                    
+		    " =" +
+                    " 0" +
+		    " WHERE" + 
+                    " ID" +                                      
+                    " = " + pId;                                                            
+            accesoDatos.ejecutaSQL(sql);
+            return true;
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+    }
+    
     public boolean InsertarUsuario(Usuario pUsuario)throws SNMPExceptions, SQLException {
         String sql = "";
         try {
@@ -94,6 +150,8 @@ public class DBUsuario extends Hacienda {
                     + "(" +
                     "ID_Tipo_Persona," +		    
                     "ID_Horario," +
+                    "Persona_Empleado," +
+                    "Tipo_Empleado," +
 		    "Persona_Cliente," +
 		    "Idntf_Persona," + 
                     "Nmbr_Persona," +
@@ -112,6 +170,8 @@ public class DBUsuario extends Hacienda {
                     "(" +                                      
                     "" +pUsuario.getId_Tipo_Persona()+ "" +                    
                     "" +pUsuario.getId_Horario()+ "" +
+                    "" +pUsuario.getPersona_empleado()+ "" +
+                    "" +pUsuario.getTipo_empleado()+ "" +                    
                     "" +pUsuario.getPersona_cliente()+ "" +
                     "'" +pUsuario.getIdntf_persona()+ "'" +            
 	            "'" +pUsuario.getNmbr_persona()+ "'" +
@@ -154,9 +214,8 @@ public class DBUsuario extends Hacienda {
               ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(select);
              //Se llena el arryaList con los proyectos   
               while (rsPA.next()) {
-                  
-                  int id_Tipo_Persona = rsPA.getInt("ID_Tipo_Persona");
-                  int id_Tipo_Identificacion = rsPA.getInt("ID_Tipo_Identificacion");
+                  int id = rsPA.getInt("ID");                  
+                  int id_Tipo_Persona = rsPA.getInt("ID_Tipo_Persona");                  
                   int id_Horario = rsPA.getInt("ID_Horario");
                   float persona_Empleado = rsPA.getInt("Persona_Empleado");                  
                   String tipo_Empleado = rsPA.getString("Tipo_Empleado");
@@ -175,8 +234,8 @@ public class DBUsuario extends Hacienda {
                   Date fecha_Ult_Registro = rsPA.getDate("Fech_Ult_Edicion");
 
                   Usuario oUsuario = new Usuario(
-                          id_Tipo_Persona, 
-                          id_Tipo_Identificacion, 
+                          id,
+                          id_Tipo_Persona,                           
                           id_Horario, 
                           persona_Empleado, 
                           tipo_Empleado, 

@@ -10,6 +10,7 @@ import Model.CatalogoDia;
 import Model.CatalogoHora;
 import Model.DBCatalogoDia;
 import Model.DBCatalogoHora;
+import Model.DBTipoPersona;
 import Model.Usuario;
 import Model.DBUsuario;
 import Model.TipoPersona;
@@ -308,25 +309,25 @@ public class BeanUsuario {
     }
 
     public LinkedList<TipoPersona> getLista_tipo_persona() throws SNMPExceptions, SQLException {
-        int catalogo_hora_id=0;
-        String catalogo_hora_descripcion="";        
+        int id=0;
+        String descripcion="";        
         
-        LinkedList<CatalogoHora> lista_catalogo_hora = new LinkedList<CatalogoHora>();
-        DBCatalogoHora db_catalogo_hora = new DBCatalogoHora();
+        LinkedList<TipoPersona> lista_tipo_persona = new LinkedList<TipoPersona>();
+        DBTipoPersona db_tipo_persona = new DBTipoPersona();
         
-        lista_catalogo_hora = db_catalogo_hora.Lista_Catalogo_Hora();
+        lista_tipo_persona = db_tipo_persona.Lista_Tipo_Persona();
         
         LinkedList resultList = new LinkedList();
-        resultList.add(new SelectItem(0, "Hora entrega"));
+        resultList.add(new SelectItem(0, "Tipo persona"));
         
-        for (Iterator iter= lista_catalogo_hora.iterator();
+        for (Iterator iter= lista_tipo_persona.iterator();
                 iter.hasNext();) {
         
-            CatalogoHora catalogo_hora = (CatalogoHora) iter.next();
-            catalogo_hora_id = catalogo_hora.getId();            
-            catalogo_hora_descripcion = catalogo_hora.getDscrp_hora();                        
+            TipoPersona tipo_persona = (TipoPersona) iter.next();
+            id = tipo_persona.getId();            
+            descripcion = tipo_persona.getDscrp_tipo_persona();                        
             
-            resultList.add(new SelectItem(catalogo_hora_id, catalogo_hora_descripcion));
+            resultList.add(new SelectItem(id, descripcion));
          }         
          return resultList; 
     }
@@ -338,16 +339,50 @@ public class BeanUsuario {
     public BeanUsuario() {
     }
     
-    public boolean AgregarUsuario() throws SNMPExceptions, SQLException{        
-        
+    public boolean AgregarUsuario() throws SNMPExceptions, SQLException{                
         //Validaciones 
         Usuario oUsuario = new Usuario(id, id_Tipo_Persona, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
         DBUsuario oUsuarioDB = new DBUsuario();
         return oUsuarioDB.InsertarUsuario(oUsuario);
     }
     
-    public boolean EditarUsuario() throws SNMPExceptions, SQLException{
+    public boolean ConsultarUsuario() throws SNMPExceptions, SQLException{
+        //Validaciones 
+        DBUsuario usuarioDB = new DBUsuario();
+        Usuario usuario = usuarioDB.ConsultarUsuario(id);                            		                                                                                                                                                                                                                               
+                                                            
+        this.setId_Tipo_Persona(usuario.getId_Tipo_Persona());
+        this.setId_Horario(usuario.getId_Horario());
+        this.setPersona_Empleado(usuario.getPersona_empleado());
+        this.setTipo_Empleado(usuario.getTipo_empleado());
+        this.setPersona_Cliente(usuario.getPersona_cliente());
+        this.setIdntf_persona(usuario.getIdntf_persona());
+        this.setNmbr_persona(usuario.getNmbr_persona());        
+        this.setAplld_1_persona(usuario.getAplld_1_persona());
+        this.setAplld_2_persona(usuario.getAplld_2_persona());
+        this.setCntrs_persona(usuario.getCntrs_persona());
+        this.setDscrp_Empresa(usuario.getDscrp_empresa());
+        this.setDirc_Principal(usuario.getDirc_principal());
+        this.setLog_Activo(usuario.getLog_activo());
+        this.setId_Usr_Registro(usuario.getId_usr_registro());
+        this.setFech_Registro(usuario.getFech_registro());
+        this.setId_Usr_Ult_Registro(usuario.getId_usr_ult_Registro());
+        this.setFech_Ult_Registro(usuario.getFech_ult_registro());
+        
         return true;
+    }   
+    
+    public boolean EditarUsuario() throws SNMPExceptions, SQLException{
+        //Validaciones 
+        Usuario oUsuario = new Usuario(id, id_Tipo_Persona, id_Horario, persona_Empleado, tipo_Empleado, Persona_Cliente, idntf_persona, nmbr_persona, aplld_1_persona, aplld_2_persona, cntrs_persona, dscrp_Empresa, dirc_Principal, log_Activo, id_Usr_Registro, fech_Registro, id_Usr_Ult_Registro, fech_Ult_Registro);
+        DBUsuario oUsuarioDB = new DBUsuario();
+        return oUsuarioDB.ActualizarUsuario(oUsuario);
+    }   
+    
+    public boolean EliminarUsuario() throws SNMPExceptions, SQLException{
+        //Validaciones         
+        DBUsuario oUsuarioDB = new DBUsuario();
+        return oUsuarioDB.DesactivarUsuario(id);
     }   
    
 }
