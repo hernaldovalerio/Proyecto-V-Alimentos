@@ -41,10 +41,35 @@ public class DBProducto extends Hacienda{
     public String ID_Usr_RegistroBD() {
         return "604260120";
     }
-        
-    public boolean ConsultarProducto(int ID) throws SNMPExceptions, SQLException{
-        
-        boolean existe = false;
+     
+    public boolean ActualizarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
+        String sql = "";
+        try {
+            sql = "UPDATE PRODUCTO SET" +                    
+                    " ID_Categoria=" + pProducto.getId_Categoria() +                    
+		    " Rut_Fotografia="  + pProducto.getRut_Fotografia()+                   
+                    " Precio=" + pProducto.getPrecio() +                   
+		    " Cnt_Minima=" + pProducto.getCnt_minima() +                   		    
+                    " LOG_ACTIVO="+ this.ActivarRegistroBD()+ 
+		    " ID_Usr_Registro=" + this.ID_Usr_RegistroBD()+ 
+                    " Fech_Registro=" + "GETDATE()"+
+                    " ID_Usr_Ult_Edicion=" + this.ID_Usr_RegistroBD()+ 
+                    " Fech_Ult_Edicion=" +"GETDATE()" +
+                    " WHERE ID = "+ pProducto.getId();
+                    		                                                    
+            accesoDatos.ejecutaSQL(sql);                                                    		
+            return true;
+                        
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
+    }                       
+    
+    public Producto ConsultarProducto(int ID) throws SNMPExceptions, SQLException {
+        Producto producto = null;
         String sql = "";
         try {
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -52,11 +77,23 @@ public class DBProducto extends Hacienda{
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
             
             if (rsPA.next()) {
-                existe = true;
+                int id = rsPA.getInt("ID");
+                int id_categoria = rsPA.getInt("ID_Categoria");
+                String rut_fotografia = rsPA.getString("Rut_Fotografia");
+                double precio = rsPA.getDouble("Precio");
+                int cnt_minima = rsPA.getInt("Cnt_Minima");
+                short log_activo = rsPA.getShort("LOG_ACTIVO");
+                String id_usr_registro = rsPA.getString("ID_Usr_Registro");
+                Date fech_registro = rsPA.getDate("Fech_Registro");
+                String id_usr_ult_registro = rsPA.getString("ID_Usr_Ult_Edicion");
+                Date fech_ult_registro = rsPA.getDate("Fech_Ult_Edicion");
+                
+                producto = new Producto(id, id_categoria, rut_fotografia, precio, cnt_minima, log_activo, id_usr_registro, fech_registro, id_usr_ult_registro, fech_ult_registro);
+                
             }
             
             rsPA.close();
-            return existe;
+            return producto;
             
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
@@ -65,6 +102,28 @@ public class DBProducto extends Hacienda{
         }finally{
         }
         
+    }
+    
+    public boolean DesactivarProducto(int pId)throws SNMPExceptions, SQLException{
+        String sql = "";
+        try {                            
+            sql = "UPDATE PRODUCTO" +
+                    " set" +
+                    " LOG_ACTIVO" +                    
+		    " =" +
+                    " 0" +
+		    " WHERE" + 
+                    " ID" +                                      
+                    " = " + pId;                                                            
+            accesoDatos.ejecutaSQL(sql);
+            return true;
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        }finally{
+        }
     }
     
     public boolean InsertarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
@@ -104,59 +163,7 @@ public class DBProducto extends Hacienda{
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
         }finally{
         }
-    }
-    
-    public boolean ActualizarProducto(Producto pProducto)throws SNMPExceptions, SQLException {
-        String sql = "";
-        try {
-            sql = "UPDATE PRODUCTO SET" +                    
-                    " ID_Categoria=" + pProducto.getId_Categoria() +                    
-		    " Rut_Fotografia="  + pProducto.getRut_Fotografia()+                   
-                    " Precio=" + pProducto.getPrecio() +                   
-		    " Cnt_Minima=" + pProducto.getCnt_minima() +                   		    
-                    " LOG_ACTIVO="+ this.ActivarRegistroBD()+ 
-		    " ID_Usr_Registro=" + this.ID_Usr_RegistroBD()+ 
-                    " Fech_Registro=" + "GETDATE()"+
-                    " ID_Usr_Ult_Edicion=" + this.ID_Usr_RegistroBD()+ 
-                    " Fech_Ult_Edicion=" +"GETDATE()" +
-                    " WHERE ID = "+ pProducto.getId();
-                    		                                                    
-            accesoDatos.ejecutaSQL(sql);                                                    		
-            return true;
-                        
-        } catch (SQLException e) {
-            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
-        } catch (Exception e) {
-            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
-        }finally{
-        }
-    }
-    
-                
-    public Producto ConsultarProducto(int ID) throws SNMPExceptions, SQLException{
-        
-        Producto prodcuto = null;        
-        String sql = "garcilaso";
-        try {
-            AccesoDatos accesoDatos = new AccesoDatos();
-            sql = "SELECT * FROM PRODUCTO WHERE ID = " + ID;
-            ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
-            
-            if (rsPA.next()) {
-                existe = true;
-            }
-            
-            rsPA.close();
-            return existe;
-            
-        } catch (SQLException e) {
-            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
-        } catch (Exception e) {
-            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
-        }finally{
-        }
-        
-    }
+    }         
     
     public LinkedList<Producto> ProductoTodo() throws SNMPExceptions, SQLException {
       String select = "";

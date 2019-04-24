@@ -86,5 +86,11 @@ public class TipoPersona {
         this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
+
+    public TipoPersona(short id, String dscrp_tipo_persona) {
+        this.id = id;
+        this.dscrp_tipo_persona = dscrp_tipo_persona;
+    }
+    
     
 }

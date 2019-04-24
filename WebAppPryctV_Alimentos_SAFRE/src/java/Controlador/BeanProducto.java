@@ -8,6 +8,7 @@ package Controlador;
 import DAO.SNMPExceptions;
 import Model.Producto;
 import Model.DBProducto;
+import Model.DBUsuario;
 import Model.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -123,5 +124,37 @@ public class BeanProducto implements Serializable {
         DBProducto oProductoDB = new DBProducto();
         return oProductoDB.InsertarProducto(oProducto);
     }
+
+    public boolean ConsultarProducto() throws SNMPExceptions, SQLException {
+        //Validaciones 
+        DBProducto productoDB = new DBProducto();
+        Producto producto = productoDB.ConsultarProducto(id);
+
+        this.setId_Categoria(producto.getId_Categoria());
+        this.setRut_Fotografia(producto.getRut_Fotografia());
+        this.setPrecio(producto.getPrecio());
+        this.setCnt_minima(producto.getCnt_minima());
+        this.setLog_activo(producto.getLog_activo());
+        this.setId_usr_regitro(producto.getId_usr_regitro());
+        this.setFech_Registro(producto.getFech_Registro());
+        this.setId_Usr_Ult_Edicion(producto.getId_Usr_Ult_Edicion());
+        this.setFech_Ult_Registro(producto.getFech_Ult_Registro());
+        
+        return true;
+    } 
+    
+    public boolean EditarProducto() throws SNMPExceptions, SQLException{
+        //Validaciones 
+        Producto oProducto = new Producto(id, id_Categoria, rut_Fotografia, precio, cnt_minima, log_activo, id_usr_regitro, fech_Registro, id_Usr_Ult_Edicion, fech_Ult_Registro);
+        DBProducto oProductoDB = new DBProducto();
+        return oProductoDB.ActualizarProducto(oProducto);
+    }   
+    
+    public boolean EliminarProducto() throws SNMPExceptions, SQLException{
+        //Validaciones         
+        DBProducto oProductoDB = new DBProducto();
+        return oProductoDB.DesactivarProducto(id);
+    }
+    
     
 }
