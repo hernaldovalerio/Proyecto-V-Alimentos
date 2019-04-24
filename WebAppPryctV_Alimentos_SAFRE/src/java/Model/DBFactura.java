@@ -76,8 +76,8 @@ public class DBFactura extends Hacienda{
         }
     }                       
     
-    public Producto ConsultarFactura(short pID) throws SNMPExceptions, SQLException {
-        Producto producto = null;
+    public Factura ConsultarFactura(short pID) throws SNMPExceptions, SQLException {
+        Factura factura = null;
         String sql = "";
         try {
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -102,11 +102,11 @@ public class DBFactura extends Hacienda{
                 String id_usr_ult_registro = rsPA.getString("ID_Usr__Ult_Edicion");
                 Date fech_ult_registro = rsPA.getDate("Fech_Ult_Edicion");                                               
                 
-                Factura factura = new Factura(pID, id_pedido, id_est_factura, id_pago, id_tarjeta, id_moneda, fecha_factura, total_facturar, total_impuesto, total_descuento, dir_envio, log_activo, id_usr_registro, fech_registro, id_usr_ult_registro, fech_ult_registro);
+                factura = new Factura(pID, id_pedido, id_est_factura, id_pago, id_tarjeta, id_moneda, fecha_factura, total_facturar, total_impuesto, total_descuento, dir_envio, log_activo, id_usr_registro, fech_registro, id_usr_ult_registro, fech_ult_registro);
             }
             
             rsPA.close();
-            return producto;
+            return factura;
             
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        
@@ -139,10 +139,10 @@ public class DBFactura extends Hacienda{
         }
     }
     
-    public boolean InsertarFactura(Producto pProducto)throws SNMPExceptions, SQLException {
+    public boolean InsertarFactura(Factura pFactura)throws SNMPExceptions, SQLException {
         String sql = "";
         try {
-            sql = "INSERT INTO PRODUCTO"
+            sql = "INSERT INTO ENCABEZADO_FACTURA"
                     + "(" +
                     "ID_Categoria," +                    
 		    "Rut_Fotografia,"  +                    
@@ -156,10 +156,16 @@ public class DBFactura extends Hacienda{
                     ")" +
 		    " VALUES" + 
                     "(" +                    
-                    "" +pProducto.getId_Categoria()+ "" +                    
-                    "'" +pProducto.getRut_Fotografia()+ "'" +
-                    "" +pProducto.getPrecio()+ "" +
-                    "" +pProducto.getCnt_minima()+ "" +                                        
+                    "" +pFactura.getId_pedido()+ "" +                                        
+                    "" +pFactura.getId_est_factura()+ "" +
+                    "" +pFactura.getId_pago()+ "" +
+                    "" +pFactura.getId_tarjeta()+ "" +
+                    "" +pFactura.getId_moneda()+ "" +
+                    "" +pFactura.getFec_factura()+ "" +
+                    "" +pFactura.getTotal_facturar()+ "" +
+                    "" +pFactura.getTotal_impuesto()+ "" +
+                    "" +pFactura.getTotal_descuesto()+ "" +
+                    "" +pFactura.getDir_envio()+ "" +
                     "" +this.ActivarRegistroBD()+ "" +                    
                     "" +this.ID_Usr_RegistroBD()+ "" +                    
                     "" +"GETDATE()"+ "" +                    
