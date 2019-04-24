@@ -85,6 +85,11 @@ public class CatalogoHora {
         this.id_Usr_Ult_Registro = id_Usr_Ult_Registro;
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
+
+    public CatalogoHora(int id, String dscrp_hora) {
+        this.id = id;
+        this.dscrp_hora = dscrp_hora;
+    }
     
     
     

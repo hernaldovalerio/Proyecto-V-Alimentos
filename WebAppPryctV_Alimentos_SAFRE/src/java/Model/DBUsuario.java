@@ -17,18 +17,18 @@ import java.util.LinkedList;
  *
  * @author mi pc
  */
-public class UsuarioDB extends Hacienda {
+public class DBUsuario extends Hacienda {
     private AccesoDatos accesoDatos = new AccesoDatos();
     private Connection conn;  
 
     private LinkedList<Usuario> listaP = new LinkedList<Usuario>();
     
-    public UsuarioDB (Connection conn) {
+    public DBUsuario (Connection conn) {
         accesoDatos = new AccesoDatos();    
         accesoDatos.setDbConn(conn);
     }
     
-    public UsuarioDB() {
+    public DBUsuario() {
         super();
     }
     
@@ -42,21 +42,41 @@ public class UsuarioDB extends Hacienda {
         return "604260120";
     }
             
-    public boolean ConsultarUsuario(int ID) throws SNMPExceptions, SQLException{
+    public Usuario ConsultarUsuario(int ID) throws SNMPExceptions, SQLException{
         
-        boolean existe = false;
+        Usuario usuario = null;
         String sql = "";
         try {
             AccesoDatos accesoDatos = new AccesoDatos();
             sql = "SELECT * FROM PERSONA WHERE ID = " + ID;
             ResultSet rsPA = accesoDatos.ejecutaSQLRetornaRS(sql);
             
-            if (rsPA.next()) {
-                existe = true;
-            }
+            while (rsPA.next()) {                                                                                          
+
+                int id = rsPA.getInt("ID");
+                int id_tipo_persona = rsPA.getInt("ID_Tipo_Persona");
+                int id_horario = rsPA.getInt("ID_Horario");                
+                short persona_empleado = rsPA.getShort("Persona_Empleado");        
+                String tipo_empleado = rsPA.getString("Tipo_Empleado");
+                short persona_cliente = rsPA.getShort("Persona_Cliente");        
+                String idntf_persona = rsPA.getString("Idntf_Persona"); 
+                String nmbr_persona = rsPA.getString("Nmbr_Persona");
+                String aplld1_persona = rsPA.getString("Aplld_1_Persona");
+                String aplld2_persona = rsPA.getString("Aplld_2_Persona");
+                String contrs_persona = rsPA.getString("Contrs_Persona");
+                String nmbr_empresa = rsPA.getString("Nmbr_Empresa");
+                String dir_principal = rsPA.getString("Dirc_Principal");
+                String log_activo = rsPA.getString("LOG_ACTIVO");
+                String id_usr_registro = rsPA.getString("ID_Usr_Registro");
+                Date fech_registro = rsPA.getDate("Fech_Registro");
+                String id_usr_ult_registro = rsPA.getString("ID_Usr_Ult_Edicion");
+                Date fech_ult_registro = rsPA.getDate("Fech_Ult_Edicion");
+                
+                usuario = new Usuario(id, id_tipo_persona, id_horario, persona_empleado, tipo_empleado, persona_cliente, idntf_persona, nmbr_persona, aplld1_persona, aplld2_persona, contrs_persona, nmbr_empresa, dir_principal, log_activo, id_usr_registro, fech_registro, id_usr_ult_registro, fech_ult_registro);                
+              }
             
             rsPA.close();
-            return existe;
+            return usuario;
             
         } catch (SQLException e) {
             throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());        

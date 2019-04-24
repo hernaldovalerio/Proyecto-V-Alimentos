@@ -7,7 +7,7 @@ package Controlador;
 
 import DAO.SNMPExceptions;
 import Model.Producto;
-import Model.ProductoDB;
+import Model.DBProducto;
 import Model.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -120,7 +120,7 @@ public class BeanProducto implements Serializable {
     public boolean AgregarProducto() throws SNMPExceptions, SQLException{
         //Validaciones 
         Producto oProducto = new Producto(id, id_Categoria, rut_Fotografia, precio, cnt_minima, log_activo, id_usr_regitro, fech_Registro, id_Usr_Ult_Edicion, fech_Ult_Registro);
-        ProductoDB oProductoDB = new ProductoDB();
+        DBProducto oProductoDB = new DBProducto();
         return oProductoDB.InsertarProducto(oProducto);
     }
     

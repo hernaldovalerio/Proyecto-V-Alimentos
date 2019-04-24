@@ -122,7 +122,9 @@ and open the template in the editor.
                                 <div class="form-group col-md-6">
                                     <label for="inputTipoID">Tipo de Indentificación:</label>
                                     <select id="inputTipoID" class="form-control">
-                                        <h:selectOneMenu value="#{beanUsuario.id_Tipo_Persona}">                                                                                   </h:selectOneMenu>
+                                        <h:selectOneMenu value="#{beanUsuario.id_Tipo_Persona}">
+                                            <f:selectItems ></f:selectItems>
+                                        </h:selectOneMenu>
 
                                     </select>
                                 </div>
@@ -162,11 +164,11 @@ and open the template in the editor.
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputtelefono">Teléfono Principal</label>
-                                        <h:inputText value="" > </h:inputText>
+                                        <h:inputText value="#{beanUsuario.telefono_principal}" > </h:inputText>
 
 
                                         <label for="inputtelefonoOp">Teléfono Opcional</label>
-                                        <h:inputText value="" > </h:inputText>
+                                        <h:inputText value="#{beanUsuario.telefono_opcional}" > </h:inputText>
                                     </div>
                                 </div>
 
@@ -292,15 +294,16 @@ and open the template in the editor.
                                 
                                 <div class="form-group col-md-6">
                                         <label for="inputDiasEntrega">Dias de Entrega</label>
-                                        <select id="inputCanton" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
+                                        <h:selectOneMenu value="#{beanUsuario.entrega_dia}">
+                                            <f:selectItems value="#{beanUsuario.lista_catalogo_dia}"/>
+                                        </h:selectOneMenu>                                            
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputDiasHorario">Horario</label>
-                                        <select id="inputProvincia" class="form-control">
-                                            <f:selectItems value=""/>
-                                        </select>
+                                        <h:selectOneMenu value="#{beanUsuario.entrega_hora}">
+                                            <f:selectItems value="#{beanUsuario.lista_catalogo_hora}"/>
+                                        </h:selectOneMenu>                                            
+
                                     </div>
 
 
