@@ -13,32 +13,59 @@ import javax.enterprise.context.Dependent;
  *
  * @author Estudiante
  */
-@Named(value = "beanFactura")
+@Named(value = "beanPedido")
 @Dependent
-public class BeanFactura {
+public class BeanPedido {
 
-    private short id;
-    private String dscrp_pago;
+    private int id;
+    private int id_persona;
+    private int id_tipo_pedido;
+    private int id_est_pedido;
+    private Date fech_pedido;
     private short log_Activo; 
     private String id_Usr_Registro;
     private Date fech_Registro;
     private String id_Usr_Ult_Registro;
     private Date fech_Ult_Registro;
 
-    public short getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getDscrp_pago() {
-        return dscrp_pago;
+    public int getId_persona() {
+        return id_persona;
     }
 
-    public void setDscrp_pago(String dscrp_pago) {
-        this.dscrp_pago = dscrp_pago;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
+    }
+
+    public int getId_tipo_pedido() {
+        return id_tipo_pedido;
+    }
+
+    public void setId_tipo_pedido(int id_tipo_pedido) {
+        this.id_tipo_pedido = id_tipo_pedido;
+    }
+
+    public int getId_est_pedido() {
+        return id_est_pedido;
+    }
+
+    public void setId_est_pedido(int id_est_pedido) {
+        this.id_est_pedido = id_est_pedido;
+    }
+
+    public Date getFech_pedido() {
+        return fech_pedido;
+    }
+
+    public void setFech_pedido(Date fech_pedido) {
+        this.fech_pedido = fech_pedido;
     }
 
     public short getLog_Activo() {
@@ -81,11 +108,7 @@ public class BeanFactura {
         this.fech_Ult_Registro = fech_Ult_Registro;
     }
     
-    
-    /**
-     * Creates a new instance of BeanFactura
-     */
-    public BeanFactura() {
+    public BeanPedido() {
     }
     
 }
