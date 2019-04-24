@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+        <title>SAFRE</title>
+
+        <!-- Mobile Specific Meta-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="plugins/themefisher-font/style.css"/>
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="plugins/slick-carousel/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="plugins/slick-carousel/slick/slick-theme.css"/>
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="css/style.css"/>
+
+    </h:head>
+
+    <h:body id="body">
+
+        <!-- Start Top Header Bar -->
+        <h:form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 col-sm-4">
+                        <div class="contact-number">
+                            <i class="tf-ion-ios-telephone"></i>
+                            <span>506-800-SAFRE</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12 col-sm-4">
+                        <!-- Site Logo -->
+                        <div class="logo text-center">
+                            <a href="index.html">
+                                <!-- replace logo here -->
+                                <img width="110px" height="110px" viewBox="0 0 155 29" version="1.1" src="images/SAFRE-transparent.png">
+                                    <h5>
+                                        Saludable y Frescos Alimentos Preparados
+                                    </h5>        
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40" font-family="AustinBold, Austin" font-weight="bold">
+                                        <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
+                                            <text id="SAFRE">
+
+                                            </text>
+                                        </g>
+                                    </g>
+                                </img>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </h:form><!-- End Top Header Bar -->
+
+        <!-- Main Menu Section -->
+
+        <nav class="navbar navigation">
+            <div class="container">
+
+                <!-- Navbar Links -->
+                <div id="navbar" class="navbar-collapse collapse text-center">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li class="dropdown ">
+                            <a href="Index.xhtml">Inicio</a>
+                        </li><!-- / Home -->
+                        <!-- Productos -->
+                        <li>
+                            <a href="Productos.xhtml">Productos</a>
+                        </li><!-- / Productos -->
+                        <!-- Contactenos -->
+                        <li>
+                            <a href="Contacto.xhtml">Contactenos</a>
+                        </li><!-- / Contactenos -->
+
+                        <li class="dropdown ">
+                            <a href="Index.xhtml">Salir</a>
+                        </li>
+
+                    </ul><!-- / .nav .navbar-nav -->
+
+                </div><!--/.navbar-collapse -->
+            </div><!-- / .container -->
+        </nav>
+
+        <section class="page-header">
+
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">Mantenimiento Factura</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#">Mantenimiento Factura</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="BUSCAR" action="#{bean}" ></h:commandButton>
+
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="EDITAR" action="#{bean}" ></h:commandButton>
+
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="ANULAR" action="#{bean}" ></h:commandButton>
+
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="SALIR" action="#{bean}" ></h:commandButton>
+
+                        <h:commandButton style="margin-right: 50px"  class="btn btn-secondary  btn-lg" value="AYUDA" action="#{bean}" ></h:commandButton>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h:form class="page-wrapper">
+            <div class="contact-section">
+                <div class="container">
+                    <div class="row">
+                        <!-- Contact Form -->
+                        <div class="contact-form col-md-6 " >
+                            <form id="contact-form" method="post" action="" role="form">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Número de Factura">Número de Factura</label>
+                                        <h:inputText value="#{bean}"> </h:inputText>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Fecha">Fecha</label>
+                                        <h:inputText value="#{bean}"> </h:inputText>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Nombre Cliente ">Nombre Cliente</label>
+                                        <h:inputText value="#{bean}"> </h:inputText>
+                                    </div>
+                                </div>
+
+                                 
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputtelefono">Teléfono de Contacto</label>
+                                        <h:inputText value="" > </h:inputText>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPAgo">Metodo de Pago</label>
+                                        <h:inputText value="" > </h:inputText>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="inputDirección">Dia y hora de entrega</label>
+                                    <h:inputText value="" > </h:inputText>
+                                </div>
+
+                               
+                               </form>
+                            
+                        </div>
+
+                        <section class="page-wrapper">
+                            <div class="contact-section">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <!-- Contact Form -->
+                                        <div class="contact-form col-md-6 " >
+                                            <h:form id="contact-form" >
+
+
+                                                <div class="form-group col-md-10">
+                                                    <label for="inputTipoID">Direccion de entrega</label>
+
+                                                    <select id="inputTipoID" class="form-control">
+                                                        <option value="Principal">Direccion Principal</option>
+                                                        <option value="Despacho">Direccion Despacho</option>
+                                                        
+                                                    </select>
+                                                </div>
+
+                                               
+
+                                                    
+                                      
+                                                
+                                                
+
+                                            </h:form>
+                                        </div>   
+                                    </div>   
+                                </div>   
+                            </div>   
+
+                        </section>
+                        
+                        <!-- ./End Contact Form -->
+
+   <table style="width:100%">
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Cantidad</th> 
+                                                        <th>Descripción</th> 
+                                                        <th>Precio Unidad   </th> 
+                                                        <th>Precio Total</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jill</td>
+                                                        <td>1</td> 
+                                                        <td>500</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Eve</td>
+                                                        <td>2</td> 
+                                                        <td>940</td>
+                                                    </tr>
+                                                </table>
+
+                        <br> </br>
+                            
+            <div class="form-group col-md-10">
+                                    <label for="inputTotal">Total Neto:</label>
+                                    <h:inputText value="" > </h:inputText>
+                                    <label for="inputIV">IV 13%:</label>
+                                    <h:inputText value="" > </h:inputText>
+                                    <label for="inputTotal">Total:</label>
+                                    <h:inputText value="" > </h:inputText>
+                                    </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        
+
+
+        </h:form>
+        
+         
+
+        <footer class="footer section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="social-media">
+                            <li>
+                                <a href="">
+                                    <i class="tf-ion-social-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="tf-ion-social-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="tf-ion-social-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="tf-ion-social-pinterest"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <p class="copyright-text">© 2019 SAFRE todos derechos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </h:body>
+</html>
